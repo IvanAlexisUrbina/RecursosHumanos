@@ -1,0 +1,574 @@
+.textArea{
+  
+    resize: none;
+}
+
+.labelObsinicial{
+
+    font-size: 18px;
+}
+#menu_toggle{
+background-color: #181864;
+}
+.nav_title{
+    background-color:#181864;
+}
+#carouselExampleControls{  
+
+/*control del carrousel*/
+
+  
+}
+#datable-responsive{
+  width: 200px; 
+}
+.left_col scroll-view{
+    width: 200px;
+}
+#img1, #img2, #img3{
+    display:flexbox;
+    width: 100%;
+    height: 500px; 
+    position: relative;
+}
+
+.encabezadoForm{
+    color: #181864;
+   font-weight: bolder;
+   font-size: 20px;
+}
+#formulariogenerar{
+    border-radius: 2px;
+}
+.part2{
+    align-items: center;
+
+}
+.formestilo{
+    box-shadow:1px black;
+}
+#formulariogenerar{
+    align-items: center;
+}
+.estiloinput{
+border:2px solid #73879C;
+width: 50%;
+border-radius: 5px;
+}
+.eme{
+ background-color: #181864;
+ color: white;
+ border-radius: 5px;
+}
+.oferta{
+    width: 100%;
+}
+.desc_tarea{
+    width: 100%; 
+}
+.caja{
+    width: 100%;
+}
+.eo{
+    padding: 5px;
+    color: black;
+}
+.eme2{
+    background-color: white;
+    color: rgb(0, 0, 0);
+    width: 100%;
+    border-radius: 5px;
+   }
+
+.titulos_negrita{
+    color: #181864;
+    font-weight: bolder;
+    font-size: 15px;
+}
+
+.logoform{
+    position: flex;
+    margin-right: 50%;
+    width: 200px;
+    border-radius: 5px;
+    bottom: 70%;
+   
+}
+
+#ofertasAspirante{
+ 
+}
+#imagen_oferta{
+    width: 50%;
+    height: 120px;
+    margin-left: 25%;
+}
+.botonaplicar{
+
+}
+#botonverdetalle{
+margin-left:29%;
+color: white;
+background-color: #e28e16;
+}
+.desc_tarjetas{
+    display: none;
+    z-index: inherit;
+}
+
+.container_desc_tarjeta{
+    box-shadow:3px 2px 3px 1px #1a2036;
+    margin-left:30px;
+    margin-bottom:30px;
+    border-radius:10px; 
+    border:2px inline black;
+    width:30rem;
+    padding:1%;
+    position:relative;
+    
+}
+th{
+    background-color: #181864;
+}
+button{
+    color: white;
+}
+.absolute{
+    position: absolute;
+    margin-left: 25%;
+    z-index: 5;
+}
+.filtros{
+    border-radius: 5px;
+    border:3px solid #181864;
+}
+.table{
+    font-weight: normal;
+}
+#contenedor{
+    font-weight: bolder;
+    color: black;
+    text-align:-webkit-center;
+    
+}
+#contenedorcontra{
+    font-weight: bolder;
+    color: black;
+    text-align:-webkit-center;
+    
+}
+
+/*fondoooooooooo*/
+.fondo {
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    position: absolute;
+    margin-bottom: 40px;
+    overflow: hidden;
+    background-color:white;
+}
+
+.logo-animacion {
+    width: 80px;
+    opacity: .3;
+    position: absolute;
+    bottom: -150px;
+    animation: burbujas 4s linear infinite;
+}
+
+.logo-animacion:nth-child(1) {
+    width: 25px;
+    height: 25px;
+    left: 20%;
+    animation-duration: 2s;
+    animation-delay: 3s;
+}
+
+.logo-animacion:nth-child(2) {
+    width: 45px;
+    height: 45px;
+    left: 40%;
+    animation-duration: 3.2s;
+    animation-delay: 4s;
+}
+
+.logo-animacion:nth-child(3) {
+    width: 70px;
+    height: 70px;
+    left: 60%;
+    animation-duration: 2.8s;
+    animation-delay: 2.9s;
+}
+
+.logo-animacion:nth-child(4) {
+    width: 100px;
+    height: 100px;
+    left: 80%;
+    animation-duration: 3.5s;
+    animation-delay: 2s;
+}
+
+.logo-animacion:nth-child(5) {
+    width: 45px;
+    height: 45px;
+    left: 5%;
+    animation-duration: 3.3s;
+    animation-delay: 4s;
+}
+
+.logo-animacion:nth-child(6) {
+    width: 20px;
+    height: 20px;
+    left: 25%;
+    animation-duration: 2.6s;
+    animation-delay: 2.5s;
+}
+
+.logo-animacion:nth-child(7) {
+    width: 100px;
+    height: 100px;
+    left: 45%;
+    animation-duration: 3.8s;
+    animation-delay: 2s;
+}
+
+.logo-animacion:nth-child(8) {
+    width: 70px;
+    height: 70px;
+    left: 65%;
+    animation-duration: 3.1s;
+    animation-delay: 4.5s;
+}
+
+.logo-animacion:nth-child(9) {
+    width: 100px;
+    height: 100px;
+    left: 10%;
+    animation-duration: 3.5s;
+    animation-delay: 2s;
+}
+
+.logo-animacion:nth-child(10) {
+    width: 70px;
+    height: 70px;
+    left: 30%;
+    animation-duration: 2.8s;
+    animation-delay: 5s;
+}
+
+.logo-animacion:nth-child(11) {
+    width: 45px;
+    height: 45px;
+    left: 50%;
+    animation-duration: 2.9s;
+    animation-delay: 4s;
+}
+
+.logo-animacion:nth-child(12) {
+    width: 20px;
+    height: 20px;
+    left: 70%;
+    animation-duration: 2s;
+    animation-delay: 3s;
+}
+
+.logo-animacion:nth-child(13) {
+    width: 70px;
+    height: 70px;
+    left: 15%;
+    animation-duration: 2.8s;
+    animation-delay: 5s;
+}
+
+.logo-animacion:nth-child(14) {
+    width: 100px;
+    height: 100px;
+    left: 35%;
+    animation-duration: 4.5s;
+    animation-delay: 0s;
+}
+
+.logo-animacion:nth-child(15) {
+    width: 20px;
+    height: 20px;
+    left: 55%;
+    animation-duration: 2s;
+    animation-delay: 3s;
+}
+
+.logo-animacion:nth-child(16) {
+    width: 45px;
+    height: 45px;
+    left: 75%;
+    animation-duration: 3s;
+    animation-delay: 4s;
+}
+
+@keyframes burbujas {
+    0% {
+        bottom: 0;
+        opacity: 0;
+    }
+    30% {
+        transform: translateX(30px);
+    }
+    50% {
+        opacity: .9;
+    }
+    100% {
+        bottom: 100vh;
+        opacity: 0;
+    }
+}
+
+@keyframes movimiento {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(50px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* para ocultar el scroll */
+
+body::-webkit-scrollbar {
+    width: 20px;
+    /* Tamaño del scroll en vertical */
+    height: 8px;
+    /* Tamaño del scroll en horizontal */
+    display: none;
+    /* Ocultar scroll */
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+
+/* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+
+body::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Cambiamos el fondo cuando esté en active */
+
+body::-webkit-scrollbar-thumb:active {
+    background-color: #999999;
+}
+/*modal usuario*/
+
+#container{
+    text-align: center;
+    height:760px;
+    align-items: center;
+    border:10px solid #181864;
+}
+/*LOGO USUARIO*/
+.logousu{
+    
+    position: flex;
+    margin-left:auto;
+    width: 200px;
+    bottom: 70%;
+    
+}
+.titletoken{
+    text-align: center;
+}
+
+.containerLogin{
+    font-weight: bolder;
+    background-color:#1a2036;
+    color: white;
+    border-radius: 5%;
+}
+#tokenlogo{
+    width: 200px;
+    height: 100px;
+    margin-left: 21%;
+}
+.redonda{
+    border-radius: 5px;
+}
+.home{
+    height: 90vh;
+}
+.contenedor_de_datos{
+    margin-left: 10px;
+}
+.centertodo{
+    margin-left: 18px;
+}
+.divcontenedores{
+    width: 100%;
+    height: auto;
+    border:2px solid black;
+    border-radius: 5px;
+}
+/*PARA TITULOS*/
+.titles{
+    font-weight: bolder;
+    
+}
+
+.ocultardivs{
+display: none;
+
+    
+}
+.showhistorial{
+    font-weight: bolder;
+    
+}
+.show{
+    border:3px solid black;
+    border-radius:5px;
+    padding: 5px;
+}
+.efectohover{
+    text-align: center;
+    border: 1px solid black ;
+    background:#181864;
+    color: white;
+}
+.efectohover:hover{
+    background:#151516;
+    color:white;
+  
+}
+#actividades{
+position: relative;
+}
+.titlesbig{
+    font-weight: bolder;
+}
+
+/* /VALIDACIONES ADMINISTRADOR/ */
+
+.procesobueno {
+    border: 1px solid #1ed12d;
+    opacity: 1;
+    box-shadow: 1px 0px 0px 3px #1ed12d;
+}
+
+.procesomalo {
+    border: 1px solid red;
+    opacity: 1;
+    box-shadow: 1px 0px 0px 3px #e72323a1; 
+}
+
+.error {
+    width: 200px;
+    height: auto;
+    display: none;
+}
+
+.error-activo {
+    color: red;
+    display: block;
+}
+
+.button:hover {
+	box-shadow: 3px 0px 30px rgba(163,163,163, 1);
+}
+/*LOGIN*/
+.login__input:focus {
+	border: 3px solid #000000;
+	outline: none;
+	box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
+}
+
+.formulario__input-error {
+	font-size: 12px;
+	margin-bottom: 0;
+	display: none;
+}
+
+.formulario__mensaje {
+	height: 45px;
+	line-height: 45px;
+	background: #F66060;
+	padding: 0 15px;
+	border-radius: 3px;
+	display: none;
+}
+
+.formulario__mensaje-activo {
+	display: block;
+}
+
+
+.formulario__input-error-activo {
+	display: block;
+}
+
+
+.formulario__mensaje-exito {
+	font-size: 14px;
+	color: #119200;
+	display: none;
+}
+
+.formulario__mensaje-exito-activo {
+	display: block;
+}
+
+/* ----- -----  Estilos para Validacion ----- ----- */
+.formulario__grupo-correcto .formulario__validacion-estado {
+	color: #1ed12d;
+	opacity: 1;
+}
+
+.formulario__grupo-incorrecto .formulario__label {
+	color: #bb2929;
+}
+
+.formulario__grupo-incorrecto .formulario__validacion-estado {
+	color: #bb2929;
+	opacity: 1;
+}
+
+.formulario__grupo-incorrecto .formulario__input {
+	border: 3px solid #bb2929;
+}
+
+
+
+/**/
+.formulario__input-error {
+	font-size: 12px;
+	margin-bottom: 0;
+	display: none;
+}
+
+.formulario__input-error-activo {
+	display: block;
+}
+
+.formulario__validacion-estado {
+	position: absolute;
+	right: 10px;
+	bottom: 15px;
+	z-index: 100;
+	font-size: 16px;
+	opacity: 0;
+}
+html{
+    padding: 0;
+    margin: 0;
+    display: grid;
+}
+
+
+/* =====================================================
+                    FIN MANTENIMIENTO
+    =====================================================*/
