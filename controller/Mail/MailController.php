@@ -35,11 +35,7 @@ class MailController
             $mail = new PHPMailer();                              // Passing `true` enables exceptions
             try {
                 //Server settings
-<<<<<<< HEAD
                 $mail->SMTPDebug = 0;                                // Enable verbose debug output
-=======
-                $mail->SMTPDebug =2;                                // Enable verbose debug output
->>>>>>> d739ce25923a802420571b97e5643e3948b034f7
 
                 $mail->CharSet = 'UTF-8';
 
