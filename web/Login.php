@@ -9,8 +9,8 @@ include_once '../lib/helpers.php';
 	<title>Inicio Sesión</title> 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="http://vacantes.gers.co/build/css/estilos.css">
-    <link rel="stylesheet" href="http://vacantes.gers.co/build/css/Mantenimientocss.css">
+	<link rel="stylesheet" href="build/css/estilos.css">
+    <link rel="stylesheet" href="build/css/Mantenimientocss.css">
     <link rel="shorcut icon" href="images/Gers.jpeg">
 	
 </head> 

@@ -13,8 +13,8 @@ foreach ($vacantes as $vac) {
             </div>
             <div class="col-md-12 form-group">
                 <label>Actualizar Estado</label>
-                <select name="estado" class="form-control">
-                    <option value="">Seleccione estado de la vacante</option>
+                <select id="estadochange" name="estado" class="form-control">
+                    <option selected="true" disabled>Seleccione estado de la vacante</option>
 
                     <?php foreach ($Estados as $est) { ?>
 
@@ -23,6 +23,10 @@ foreach ($vacantes as $vac) {
                     <?php } ?>
 
                 </select><br>
+            </div>
+            <div id="aplicaroculto" class="col-md-12 form-group">
+                <label>Fecha de cierre de la vacante</label>
+                <input type="date" class="form form-control"></input>
             </div>
 
             <div class="modal-footer">

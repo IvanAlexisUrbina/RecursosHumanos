@@ -122,8 +122,8 @@ Class FormularioController
     $id=$obj->autoIncrement("tbl_vacante","id_vacante");
     $vacante_id=$_POST['id'];
     $id_estadovacante=$_POST['estado'];
-
-    if($id_estadovacante==2){
+ 
+    if($id_estadovacante==2){///desactivando vacante
         //1- activa
         //2- inactiva
     $sql="UPDATE tbl_vacante SET id_estadovacante='2'
@@ -133,18 +133,28 @@ Class FormularioController
     WHERE id_vacante='".$vacante_id."' AND tbl_usuariovacante.id_seleccionado=3";
     $ejecutar2=$obj->Update($sql);
     }
-
-    if($id_estadovacante==1){
+   
+    if($id_estadovacante==1){//activando vacante
+        //////////////////////////////////////
+            $sql="SELECT * FROM tbl_vacante WHERE id_vacante ='".$vacante_id."'";
+            $vacante=$obj->consult($sql);
+    foreach ($vacante as $vac) {
          //1- activa
         //2- inactiva
-    $sql="SELECT * FROM tbl_vacante WHERE id_vacante='".$vacante_id."'";
-    $ejecutar2=$obj->consult($sql); 
+        if ($vac['id_estadovacante']==2) {
+        //validando que esta desactivado
+        $sql="SELECT * FROM tbl_vacante WHERE id_vacante='".$vacante_id."'";
+        $ejecutar2=$obj->consult($sql); 
         foreach ($ejecutar2 as $vac) {
          $sql="INSERT INTO tbl_vacante (`id_vacante`, `vac_nombre`, `vac_descripcion`, `vac_jornada_laboral`, `vac_tipo_contrato`, `vac_salario`, `vac_fecha`, `vac_años_xp`, `vac_educacion`, `id_estadovacante`, `vac_publicacion`)
                VALUES($id,'".$vac['vac_nombre']."','".$vac['vac_descripcion']."','".$vac['vac_jornada_laboral']."','".$vac['vac_tipo_contrato']."','".$vac['vac_salario']."','".$vac['vac_fecha']."','".$vac['vac_años_xp']."','".$vac['vac_educacion']."',1,current_timestamp())";
                $ejecutarcopia=$obj->insert($sql);
     
         }
+        }else{
+            echo "<script>alert('Esta vacante ya se encuentra activa');</script>";
+        }
+    }
     }
 
     redirect(getUrl("Admin","Formulario","consult")); 

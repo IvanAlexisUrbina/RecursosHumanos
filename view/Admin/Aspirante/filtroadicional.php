@@ -15,123 +15,31 @@ if($_SESSION['rolId']==1){
         </small>
     </div>
     <div class=" x_panel">
-        <div class="row justify-content-start col-md-12" style="" id="actividades">
-            <h5 class="titulos_negrita">FILTRAR POR ACTIVIDADES</h5>
-            <div id="area1" class="col-md-12 titulos_negrita efectohover"><label>Estudio de Sistemas
-                    Eléctricos</label></div>
-            <div id="div1" class="ocultardivs col-md-12">
-                <?php foreach ($actividades1 as $act) {?>
-                <input class="actividadesbox" type="checkbox" name='actividades[]' value=<?=$act['id_actividades']?>
-                    id="aspirantes"
-                    data-url="<?php echo getUrl("Admin", "Aspirante", "aspirantesdinamicos",array("id_vacante" => $usu['id_vacante']), "ajax") ?>">
-                <label for="checkbox1"><?= $act['act_nombre'] ?></label><br>
-                <?php }?>
-            </div>
-            <div id="area2" class="col-md-12 titulos_negrita efectohover"><label>Diseño e
-                    Ingeniería</label></div>
-            <div id="div2" class="ocultardivs col-md-12">
-                <?php foreach ($actividades2 as $act) {?>
-                <input class="actividadesbox" type="checkbox" name='actividades[]' value=<?=$act['id_actividades']?>
-                    id="aspirantes"
-                    data-url="<?php echo getUrl("Admin", "Aspirante", "aspirantesdinamicos",array("id_vacante"=>$usu['id_vacante']), "ajax") ?>">
-                <label for="checkbox1"><?= $act['act_nombre'] ?></label><br>
-                <?php  }?>
-            </div>
-            <div id="area3" class="col-md-12 titulos_negrita efectohover"><label>Pruebas Automatización
-                    y Control</label></div>
-
-            <div id="div3" class="ocultardivs col-md-12">
-                <?php foreach ($actividades3 as $act) {?>
-                <input class="actividadesbox" type="checkbox" name='actividades[]' value=<?=$act['id_actividades']?>
-                    id="aspirantes"
-                    data-url="<?php echo getUrl("Admin", "Aspirante", "aspirantesdinamicos", array("id_vacante"=>$usu['id_vacante']), "ajax") ?>">
-                <label for="checkbox1"><?= $act['act_nombre'] ?></label><br>
-                <?php  }?>
-            </div>
-            <div id="area4" class="col-md-12 titulos_negrita efectohover"> <label>Calidad de
-                    potencia</label></div>
-            <div id="div4" class="ocultardivs col-md-12">
-                <?php foreach ($actividades4 as $act) {?>
-                <input class="actividadesbox" type="checkbox" name='actividades[]' value=<?=$act['id_actividades']?>
-                    id="aspirantes"
-                    data-url="<?php echo getUrl("Admin", "Aspirante", "aspirantesdinamicos",array("id_vacante"=>$usu['id_vacante']), "ajax") ?>">
-                <label for="checkbox1"><?= $act['act_nombre'] ?></label><br>
-                <?php }?>
-            </div>
-            <div id="area5" class="col-md-12 titulos_negrita efectohover"><label>Eficiencia
-                    Energética</label></div>
-
-            <div id="div5" class="ocultardivs col-md-12">
-                <?php foreach ($actividades5 as $act) {?>
-                <input class="actividadesbox" type="checkbox" name='actividades[]' value=<?=$act['id_actividades']?>
-                    id="aspirantes"
-                    data-url="<?php echo getUrl("Admin", "Aspirante", "aspirantesdinamicos", array("id_vacante"=>$usu['id_vacante']), "ajax") ?>">
-                <label for="checkbox1"><?= $act['act_nombre'] ?></label><br>
-                <?php }?>
-            </div>
-            <div id="area6" class="col-md-12 titulos_negrita efectohover"><label>Sistemas de Puesta a
-                    Tierra</label></div>
-            <div id="div6" class="ocultardivs col-md-12">
-                <?php foreach ($actividades6 as $act) {?>
-                <input class="actividadesbox" type="checkbox" name='actividades[]' value=<?=$act['id_actividades']?>
-                    id="aspirantes"
-                    data-url="<?php echo getUrl("Admin", "Aspirante", "aspirantesdinamicos", array("id_vacante"=>$usu['id_vacante']), "ajax") ?>">
-                <label for="checkbox1"><?= $act['act_nombre'] ?></label><br>
-                <?php  }?>
-            </div>
-
-            <div id="area7" class="col-md-12 titulos_negrita efectohover"><label>Comercial</label>
-            </div>
-
-            <div id="div7" class="ocultardivs col-md-12">
-                <?php foreach ($actividades7 as $act) {?>
-                <input class="actividadesbox" type="checkbox" name='actividades[]' value=<?=$act['id_actividades']?>
-                    id="aspirantes"
-                    data-url="<?php echo getUrl("Admin", "Aspirante", "aspirantesdinamicos", array("id_vacante"=>$usu['id_vacante']), "ajax") ?>">
-                <label for="checkbox1"><?= $act['act_nombre'] ?></label><br>
-                <?php    }?>
-            </div>
-            <div id="area8" class="col-md-12 titulos_negrita efectohover"><label>Recursos
-                    Humanos</label></div>
-            <div id="div8" class="ocultardivs col-md-12">
-                <?php foreach ($actividades8 as $act) {?>
-                <input class="actividadesbox" type="checkbox" name='actividades[]' value=<?=$act['id_actividades']?>
-                    id="aspirantes"
-                    data-url="<?php echo getUrl("Admin", "Aspirante", "aspirantesdinamicos", array("id_vacante"=>$usu['id_vacante']), "ajax") ?>">
-                <label for="checkbox1"><?= $act['act_nombre'] ?></label><br>
-                <?php }?>
-            </div>
-            <div id="area9" class="col-md-12 titulos_negrita efectohover"><label>Contador</label></div>
-
-            <div id="div9" class="ocultardivs col-md-12">
-                <?php foreach ($actividades9 as $act) {?>
-                <input class="actividadesbox" type="checkbox" name='actividades[]' value=<?=$act['id_actividades']?>
-                    id="aspirantes"
-                    data-url="<?php echo getUrl("Admin", "Aspirante", "aspirantesdinamicos",array("id_vacante"=>$usu['id_vacante']), "ajax") ?>">
-                <label for="checkbox1"><?= $act['act_nombre'] ?></label><br>
-                <?php  }?>
-            </div>
-            <div id="area10" class="col-md-12 titulos_negrita efectohover"><label>Ingeniería
-                    civil</label></div>
-
-            <div id="div10" class="ocultardivs col-md-12">
-                <?php foreach ($actividades10 as $act) {?>
-                <input class="actividadesbox" type="checkbox" name='actividades[]' value=<?=$act['id_actividades']?>
-                    id="aspirantes"
-                    data-url="<?php echo getUrl("Admin", "Aspirante", "aspirantesdinamicos", array("id_vacante"=>$usu['id_vacante']), "ajax") ?>">
-                <label for="checkbox1"><?= $act['act_nombre'] ?></label><br>
-                <?php }?>
-            </div>
-            <div id="area11" class="col-md-12 titulos_negrita efectohover"><label>Sistemas</label></div>
-            <div id="div11" class="ocultardivs col-md-12">
-                <?php foreach ($actividades11 as $act) {?>
-                <input class="actividadesbox" type="checkbox" name='actividades[]' value=<?=$act['id_actividades']?>
-                    id="aspirantes"
-                    data-url="<?php echo getUrl("Admin", "Aspirante", "aspirantesdinamicos",array("id_vacante"=>$usu['id_vacante']), "ajax") ?>">
-                <label for="checkbox1"><?= $act['act_nombre'] ?></label><br>
-                <?php }?>
-            </div>
-        </div>
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
+  </li>
+</ul>
+<div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-contact-tab">Introduccion</div>
+  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+  <div class="tab-pane fade" id="pills-contact2" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+  <div class="tab-pane fade" id="pills-contact3" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+  <div class="tab-pane fade" id="pills-contact4" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+  <div class="tab-pane fade" id="pills-contact5" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+  <div class="tab-pane fade" id="pills-contact6" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+  <div class="tab-pane fade" id="pills-contact7" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+  <div class="tab-pane fade" id="pills-contact8" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+  <div class="tab-pane fade" id="pills-contact9" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+  <div class="tab-pane fade" id="pills-contact10" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+  <div class="tab-pane fade" id="pills-contact11" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+</div>
         <div class="col-md-6">
             <?php
                     foreach($Usuario as $usu){

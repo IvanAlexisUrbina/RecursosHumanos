@@ -1,164 +1,182 @@
-.textArea{
-  
+.textArea {
     resize: none;
 }
 
-.labelObsinicial{
-
+.labelObsinicial {
     font-size: 18px;
 }
-#menu_toggle{
-background-color: #181864;
-}
-.nav_title{
-    background-color:#181864;
-}
-#carouselExampleControls{  
 
-/*control del carrousel*/
+#menu_toggle {
+    background-color: #181864;
+}
 
-  
+.nav_title {
+    background-color: #181864;
 }
-#datable-responsive{
-  width: 200px; 
+
+#carouselExampleControls {
+    /*control del carrousel*/
 }
-.left_col scroll-view{
+
+#datable-responsive {
     width: 200px;
 }
-#img1, #img2, #img3{
-    display:flexbox;
+
+.left_col scroll-view {
+    width: 200px;
+}
+
+#img1,
+#img2,
+#img3 {
+    display: flexbox;
     width: 100%;
-    height: 500px; 
+    height: 500px;
     position: relative;
 }
 
-.encabezadoForm{
+.encabezadoForm {
     color: #181864;
-   font-weight: bolder;
-   font-size: 20px;
+    font-weight: bolder;
+    font-size: 20px;
 }
-#formulariogenerar{
+
+#formulariogenerar {
     border-radius: 2px;
 }
-.part2{
-    align-items: center;
 
-}
-.formestilo{
-    box-shadow:1px black;
-}
-#formulariogenerar{
+.part2 {
     align-items: center;
 }
-.estiloinput{
-border:2px solid #73879C;
-width: 50%;
-border-radius: 5px;
+
+.formestilo {
+    box-shadow: 1px black;
 }
-.eme{
- background-color: #181864;
- color: white;
- border-radius: 5px;
+
+#formulariogenerar {
+    align-items: center;
 }
-.oferta{
+
+.estiloinput {
+    border: 2px solid #73879C;
+    width: 50%;
+    border-radius: 5px;
+}
+
+.eme {
+    background-color: #181864;
+    color: white;
+    border-radius: 5px;
+}
+
+.oferta {
     width: 100%;
 }
-.desc_tarea{
-    width: 100%; 
-}
-.caja{
+
+.desc_tarea {
     width: 100%;
 }
-.eo{
+
+.caja {
+    width: 100%;
+}
+
+.eo {
     padding: 5px;
     color: black;
 }
-.eme2{
+
+.eme2 {
     background-color: white;
     color: rgb(0, 0, 0);
     width: 100%;
     border-radius: 5px;
-   }
+}
 
-.titulos_negrita{
+.titulos_negrita {
     color: #181864;
     font-weight: bolder;
     font-size: 15px;
 }
 
-.logoform{
+.logoform {
     position: flex;
     margin-right: 50%;
     width: 200px;
     border-radius: 5px;
     bottom: 70%;
-   
 }
 
-#ofertasAspirante{
- 
-}
-#imagen_oferta{
+#ofertasAspirante {}
+
+#imagen_oferta {
     width: 50%;
     height: 120px;
     margin-left: 25%;
 }
-.botonaplicar{
 
+.botonaplicar {}
+
+#botonverdetalle {
+    margin-left: 29%;
+    color: white;
+    background-color: #e28e16;
 }
-#botonverdetalle{
-margin-left:29%;
-color: white;
-background-color: #e28e16;
-}
-.desc_tarjetas{
+
+.desc_tarjetas {
     display: none;
     z-index: inherit;
 }
 
-.container_desc_tarjeta{
-    box-shadow:3px 2px 3px 1px #1a2036;
-    margin-left:30px;
-    margin-bottom:30px;
-    border-radius:10px; 
-    border:2px inline black;
-    width:30rem;
-    padding:1%;
-    position:relative;
-    
+.container_desc_tarjeta {
+    box-shadow: 3px 2px 3px 1px #1a2036;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    border: 2px inline black;
+    width: 30rem;
+    padding: 1%;
+    position: relative;
 }
-th{
+
+th {
     background-color: #181864;
 }
-button{
+
+button {
     color: white;
 }
-.absolute{
+
+.absolute {
     position: absolute;
     margin-left: 25%;
     z-index: 5;
 }
-.filtros{
+
+.filtros {
     border-radius: 5px;
-    border:3px solid #181864;
-}
-.table{
-    font-weight: normal;
-}
-#contenedor{
-    font-weight: bolder;
-    color: black;
-    text-align:-webkit-center;
-    
-}
-#contenedorcontra{
-    font-weight: bolder;
-    color: black;
-    text-align:-webkit-center;
-    
+    border: 3px solid #181864;
 }
 
+.table {
+    font-weight: normal;
+}
+
+#contenedor {
+    font-weight: bolder;
+    color: black;
+    text-align: -webkit-center;
+}
+
+#contenedorcontra {
+    font-weight: bolder;
+    color: black;
+    text-align: -webkit-center;
+}
+
+
 /*fondoooooooooo*/
+
 .fondo {
     width: 100%;
     height: 100%;
@@ -166,7 +184,7 @@ button{
     position: absolute;
     margin-bottom: 40px;
     overflow: hidden;
-    background-color:white;
+    background-color: white;
 }
 
 .logo-animacion {
@@ -334,6 +352,7 @@ button{
     }
 }
 
+
 /* para ocultar el scroll */
 
 body::-webkit-scrollbar {
@@ -364,93 +383,108 @@ body::-webkit-scrollbar-thumb:hover {
 body::-webkit-scrollbar-thumb:active {
     background-color: #999999;
 }
+
+
 /*modal usuario*/
 
-#container{
+#container {
     text-align: center;
-    height:760px;
+    height: 760px;
     align-items: center;
-    border:10px solid #181864;
+    border: 10px solid #181864;
 }
+
+
 /*LOGO USUARIO*/
-.logousu{
-    
+
+.logousu {
     position: flex;
-    margin-left:auto;
+    margin-left: auto;
     width: 200px;
     bottom: 70%;
-    
 }
-.titletoken{
+
+.titletoken {
     text-align: center;
 }
 
-.containerLogin{
+.containerLogin {
     font-weight: bolder;
-    background-color:#1a2036;
+    background-color: #1a2036;
     color: white;
     border-radius: 5%;
 }
-#tokenlogo{
+
+#tokenlogo {
     width: 200px;
     height: 100px;
     margin-left: 21%;
 }
-.redonda{
+
+.redonda {
     border-radius: 5px;
 }
-.home{
+
+.home {
     height: 90vh;
 }
-.contenedor_de_datos{
+
+.contenedor_de_datos {
     margin-left: 10px;
 }
-.centertodo{
+
+.centertodo {
     margin-left: 18px;
 }
-.divcontenedores{
+
+.divcontenedores {
     width: 100%;
     height: auto;
-    border:2px solid black;
+    border: 2px solid black;
     border-radius: 5px;
 }
+
+
 /*PARA TITULOS*/
-.titles{
+
+.titles {
     font-weight: bolder;
-    
 }
 
-.ocultardivs{
-display: none;
+.ocultardivs {
+    display: none;
+}
 
-    
-}
-.showhistorial{
+.showhistorial {
     font-weight: bolder;
-    
 }
-.show{
-    border:3px solid black;
-    border-radius:5px;
+
+.show {
+    border: 3px solid black;
+    border-radius: 5px;
     padding: 5px;
 }
-.efectohover{
+
+.efectohover {
     text-align: center;
-    border: 1px solid black ;
-    background:#181864;
+    border: 1px solid black;
+    background: #181864;
     color: white;
 }
-.efectohover:hover{
-    background:#151516;
-    color:white;
-  
+
+.efectohover:hover {
+    background: #151516;
+    color: white;
 }
-#actividades{
-position: relative;
+
+#actividades {
+    position: relative;
 }
-.titlesbig{
+
+.titlesbig {
     font-weight: bolder;
 }
+
 
 /* /VALIDACIONES ADMINISTRADOR/ */
 
@@ -463,7 +497,7 @@ position: relative;
 .procesomalo {
     border: 1px solid red;
     opacity: 1;
-    box-shadow: 1px 0px 0px 3px #e72323a1; 
+    box-shadow: 1px 0px 0px 3px #e72323a1;
 }
 
 .error {
@@ -478,91 +512,95 @@ position: relative;
 }
 
 .button:hover {
-	box-shadow: 3px 0px 30px rgba(163,163,163, 1);
+    box-shadow: 3px 0px 30px rgba(163, 163, 163, 1);
 }
+
+
 /*LOGIN*/
+
 .login__input:focus {
-	border: 3px solid #000000;
-	outline: none;
-	box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
+    border: 3px solid #000000;
+    outline: none;
+    box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
 }
 
 .formulario__input-error {
-	font-size: 12px;
-	margin-bottom: 0;
-	display: none;
+    font-size: 12px;
+    margin-bottom: 0;
+    display: none;
 }
 
 .formulario__mensaje {
-	height: 45px;
-	line-height: 45px;
-	background: #F66060;
-	padding: 0 15px;
-	border-radius: 3px;
-	display: none;
+    height: 45px;
+    line-height: 45px;
+    background: #F66060;
+    padding: 0 15px;
+    border-radius: 3px;
+    display: none;
 }
 
 .formulario__mensaje-activo {
-	display: block;
+    display: block;
 }
-
 
 .formulario__input-error-activo {
-	display: block;
+    display: block;
 }
 
-
 .formulario__mensaje-exito {
-	font-size: 14px;
-	color: #119200;
-	display: none;
+    font-size: 14px;
+    color: #119200;
+    display: none;
 }
 
 .formulario__mensaje-exito-activo {
-	display: block;
+    display: block;
 }
 
+
 /* ----- -----  Estilos para Validacion ----- ----- */
+
 .formulario__grupo-correcto .formulario__validacion-estado {
-	color: #1ed12d;
-	opacity: 1;
+    color: #1ed12d;
+    opacity: 1;
 }
 
 .formulario__grupo-incorrecto .formulario__label {
-	color: #bb2929;
+    color: #bb2929;
 }
 
 .formulario__grupo-incorrecto .formulario__validacion-estado {
-	color: #bb2929;
-	opacity: 1;
+    color: #bb2929;
+    opacity: 1;
 }
 
 .formulario__grupo-incorrecto .formulario__input {
-	border: 3px solid #bb2929;
+    border: 3px solid #bb2929;
 }
-
 
 
 /**/
+
 .formulario__input-error {
-	font-size: 12px;
-	margin-bottom: 0;
-	display: none;
+    font-size: 12px;
+    margin-bottom: 0;
+    display: none;
 }
 
 .formulario__input-error-activo {
-	display: block;
+    display: block;
 }
 
 .formulario__validacion-estado {
-	position: absolute;
-	right: 10px;
-	bottom: 15px;
-	z-index: 100;
-	font-size: 16px;
-	opacity: 0;
+    position: absolute;
+    right: 10px;
+    bottom: 15px;
+    z-index: 100;
+    font-size: 16px;
+    opacity: 0;
 }
-html{
+
+html {
     padding: 0;
     margin: 0;
     display: grid;
@@ -572,3 +610,7 @@ html{
 /* =====================================================
                     FIN MANTENIMIENTO
     =====================================================*/
+
+#aplicaroculto {
+    display: none;
+}

@@ -21,8 +21,8 @@
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.js"></script>
 <!-- FastClick -->
 <script src="vendors/fastclick/lib/fastclick.js"></script>
-<!-- NProgress -->
-<script src="vendors/nprogress/nprogress.js"></script>
+<!-- NProgress 
+<script src="vendors/nprogress/nprogress.js"></script>-->
 <!-- Custom Theme Scripts -->
 <script src="build/js/custom.min.js"></script>
 <!-----
