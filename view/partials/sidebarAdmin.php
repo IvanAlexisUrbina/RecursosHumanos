@@ -37,12 +37,13 @@
             ?>
             <li><a><i class="fa fa-group"></i>Vacantes<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-                <li><a href="<?php echo getUrl("Admin","Formulario","create");?>">Generar vacantes</a></li>   
+                <li><a href="<?php echo getUrl("Admin","Formulario","create");?>">Generar vacantes</a></li>
+                <li><li><a href="<?php echo getUrl("Admin","Formulario","consult");?>">Vacantes Generadas</a></li>   
             </ul>
             </li>
             <li><a><i class="fa fa-search"></i>Gestión de aspirantes<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-            <li><li><a href="<?php echo getUrl("Admin","Formulario","consult");?>">Vacantes Generadas</a></li>
+            
             <li><li><a href="<?php echo getUrl("Admin","Aspirante","listado");?>">Listado</a></li>
             </ul>
             </li>

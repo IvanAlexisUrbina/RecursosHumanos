@@ -145,8 +145,14 @@ public function filtroadicional(){
           $actividades11=$obj->consult($sql);
           //fin
           $aplicados=$_GET['id_vacante'];
+          $sql="SELECT vac_nombre FROM tbl_vacante WHERE id_vacante='".$aplicados."'";
+          $name=$obj->consult($sql);
+          foreach ($name as $nam) {
+            $nombre=$nam['vac_nombre'];
+          }
+
           $sql = "SELECT tbl_usuario.usu_id,tbl_usuario.usu_nombre,tbl_usuario.usu_apellido,
-          tbl_usuario.usu_telefono,tbl_usuario.usu_correo,tbl_vacante.id_vacante,tbl_seleccionado.selec_nombre,
+          tbl_usuario.usu_telefono,tbl_usuario.usu_correo,tbl_vacante.id_vacante,tbl_vacante.vac_nombre,tbl_seleccionado.selec_nombre,
           tbl_vacante.vac_nombre,SUM(hist_añosxp)
           FROM  ((((tbl_usuario
                              INNER JOIN tbl_usuariovacante ON tbl_usuario.usu_id=tbl_usuariovacante.usu_id)

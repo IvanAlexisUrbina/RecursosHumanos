@@ -364,7 +364,7 @@ $(document).ready(function() {
                       ${datos}
                       </tbody>
     </table>`);
-                $('#prueba').DataTable({
+                var table2 = $('#prueba').DataTable({
                     responsive: true,
                     orderCellsTop: true,
                     fixedHeader: true,
@@ -394,8 +394,8 @@ $(document).ready(function() {
                     var title = $(this).text(); //es el nombre de la columna
                     $(this).html('<input type="text" class="form form-control" placeholder="' + title + '" />');
                     $('input', this).on('keyup change', function() {
-                        if (table.column(i).search() !== this.value) {
-                            table
+                        if (table2.column(i).search() !== this.value) {
+                            table2
                                 .column(i)
                                 .search(this.value)
                                 .draw();
