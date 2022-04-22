@@ -21,6 +21,7 @@ if($_SESSION['rolId']==1){
         <div class="   x_content">
             <div class="  row">
                 <div class="  col-sm-12">
+                <a onclick="window.open('<?= getUrl('Excel','Excel', 'postExcel')?>')" class='btn btn-success btn-sm' id=""title='Exportar informacion'><i class='fa fa-file-excel-o'></i></a>
                     <div class="  card-box table-responsive">
                         
                         <table id="data" class="table table-striped table-hover" style="width:100%">
@@ -51,7 +52,7 @@ if($_SESSION['rolId']==1){
                             }
                                 ?>
                             </tbody>
-                            <!--<a  href="../phpspreadsheet/server2.php"><button class='btn btn-dark btn-sm' title='Exportar informacion'><i class='fa fa-file-excel-o'></i></button></a>--->
+                            
                         </table>
                     </div>
                 </div>
