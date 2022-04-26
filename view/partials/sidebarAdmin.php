@@ -44,7 +44,8 @@
             <li><a><i class="fa fa-search"></i>Gestión de aspirantes<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
             
-            <li><li><a href="<?php echo getUrl("Admin","Aspirante","listado");?>">Listado</a></li>
+            <li>
+            <li><a data-url="<?php echo getUrl("Admin","Aspirante","graficos",false,"ajax");?>" href="<?php echo getUrl("Admin","Aspirante","listado");?>">Listado</a></li>
             </ul>
             </li>
             <li><a><i class="fa fa-user"></i>Seleccionados<span class="fa fa-chevron-down"></span></a>

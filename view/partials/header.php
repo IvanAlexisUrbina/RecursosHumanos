@@ -25,5 +25,6 @@
     <!-- Custom Theme Style -->
     <link href="build/css/custom.css" rel="stylesheet">
     <link href="build/css/Mantenimientocss.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
 
 </head>

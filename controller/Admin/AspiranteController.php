@@ -16,6 +16,38 @@ class AspiranteController{
                                      INNER JOIN tbl_vacante ON tbl_usuariovacante.id_vacante=tbl_vacante.id_vacante)
                                      INNER JOIN tbl_seleccionado ON tbl_usuariovacante.id_seleccionado=tbl_seleccionado.id_seleccionado";
         $listado=$obj->consult($sql);
+        // consulta para los graficos y saber cuantos usuarios hay y demás
+        $sql="SELECT COUNT(usu_id) FROM tbl_usuario";
+        $contador=$obj->consult($sql);
+      foreach ($contador as $key) {
+        $suma=$key['COUNT(usu_id)'];
+      }
+
+        $validar=array();
+        $yaesta=array();
+        $cont=0;
+        //consulta para ver cuantos han aplicadoa  una vacante
+        $sql="SELECT * FROM tbl_usuario";
+        $aplicados=$obj->consult($sql);
+        
+        foreach ($aplicados as $apli) {
+          array_push($validar,$apli["usu_id"]);
+          array_push($yaesta,0);
+        }
+        $sql="SELECT usu_id FROM tbl_usuario";
+        $relacionado=$obj->consult($sql);
+
+        foreach ($variable as $key => $value) {
+          for($i=0;$i<count($validar);$i++){
+            if($validar[$i]==$apli["usu_id"] && $yaesta[$i]==0){
+              $yaesta[$i]=1;
+              $cont++;
+            }
+          }
+        }
+       
+        $aplicado=$cont;
+
         include_once '../view/Admin/Aspirante/Aspirantelistado.php';
 
     }
@@ -164,7 +196,11 @@ public function filtroadicional(){
                              GROUP BY  tbl_usuario.usu_id,tbl_usuario.usu_nombre,tbl_usuario.usu_apellido,
           tbl_usuario.usu_telefono,tbl_usuario.usu_correo,tbl_vacante.id_vacante,
           tbl_vacante.vac_nombre";
+   
           $Usuario=$obj->consult($sql);
+          
+         
+
           include_once '../view/Admin/Aspirante/filtroadicional.php'; 
       }
 
@@ -230,7 +266,17 @@ public function filtroadicional(){
 
 }
 
+public function graficos(){
+  $obj= new AspiranteVacantesModel();
+  echo "<div class='col-md-6'>
+  <div class='ct-chart ct-golden-section' id='chart1'></div>
+</div>
 
+
+<div class='col-md-6'>
+  <div class='ct-chart ct-golden-section' id='chart2'></div>
+</div>";
+}
 
 }
 ?>
