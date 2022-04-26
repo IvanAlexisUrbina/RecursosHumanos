@@ -26,17 +26,18 @@ class AspiranteController{
         $validar=array();
         $yaesta=array();
         $cont=0;
-        //consulta para ver cuantos han aplicadoa  una vacante
+        //consulta todos los usuarios
         $sql="SELECT * FROM tbl_usuario where rol_id=2";
         $aplicados=$obj->consult($sql);
-        
+        //consulta los usuarios que han aplicado a las vacantes en un array
         foreach ($aplicados as $apli) {
           array_push($validar,$apli["usu_id"]);
           array_push($yaesta,0);
         }
+        //consultar usuarios y su respectiva vacante con la que aplicaron
         $sql="SELECT usu_id FROM tbl_usuariovacante";
         $relacionado=$obj->consult($sql);
-
+        // validar que no este repetido el usuario
         foreach ($relacionado as $rela) {
           for($i=0;$i<count($validar);$i++){
             if($validar[$i]==$rela["usu_id"] && $yaesta[$i]==0){
@@ -45,9 +46,29 @@ class AspiranteController{
             }
           }
         }
-       
+       //variables para los graficos que estan en listado
         $aplicado=$cont;
         $noaplicados=$suma-$aplicado;
+
+        // para saber cuantas aplicaciones en proceso hay
+        $sql="SELECT COUNT(id_seleccionado) FROM tbl_usuariovacante WHERE id_seleccionado='3'";
+        $enproceso=$obj->consult($sql);
+        foreach ($enproceso as $key) {
+          $Enproceso=$key['COUNT(id_seleccionado)'];
+        }
+        // para saber cuantas aplicaciones en aceptado para entrevista hay
+        $sql="SELECT COUNT(id_seleccionado) FROM tbl_usuariovacante WHERE id_seleccionado='4'";
+        $aceptado=$obj->consult($sql);
+        foreach ($aceptado as $key) {
+          $entrevista=$key['COUNT(id_seleccionado)'];
+        }
+        // para saber cuantos fueron seleccionados
+        $sql="SELECT COUNT(id_seleccionado) FROM tbl_usuariovacante WHERE id_seleccionado='1'";
+        $seleccionado=$obj->consult($sql);
+        foreach ($seleccionado as $key) {
+          $seleccionado2=$key['COUNT(id_seleccionado)'];
+        }
+
         include_once '../view/Admin/Aspirante/Aspirantelistado.php';
 
     }

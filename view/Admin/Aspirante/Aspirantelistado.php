@@ -79,7 +79,13 @@ if($_SESSION['rolId']==1){
 <!-- url que me lleva a la funcion -->
 <input id="grafico" type="hidden" data-url="<?php echo getUrl("Admin","Aspirante","Graficos",false,"ajax");?>">
 
-<!-- los inputs que mandar valor para los graficos -->
+
+<!-- los inputs para mandar valor para el grafico 1 -->
+<input type="hidden" id="entrevista" value="<?php echo $entrevista?>">
+<input type="hidden" id="seleccionados" value="<?php echo $seleccionado2?>">
+<input type="hidden" id="enproceso" value="<?php echo $Enproceso?>">
+
+<!-- los inputs que mandar valor para el grafico 2 -->
 <input id="listado" type="hidden" value="<?php echo $suma?>">
 <input id="aplicado" type="hidden" value="<?php echo $aplicado?>">
 <input id="noaplicado" type="hidden" value="<?php echo $noaplicados?>">
@@ -90,6 +96,10 @@ if($_SESSION['rolId']==1){
         var listado=$("#listado").val();
         var aplicado=$("#aplicado").val();
         var noaplicado=$("#noaplicado").val();
+        //////////////////////////////////graficos
+        var entrevista=$("#entrevista").val();
+        var seleccionados=$("#seleccionados").val();
+        var enproceso=$("#enproceso").val();
         $.ajax({
             url: url,
             type: "POST",
@@ -106,7 +116,7 @@ if($_SESSION['rolId']==1){
         new Chartist.Bar('#chart1', {
             labels: ["Para Entrevista","Seleccionados","En proceso"],
             series: [
-                [1,2,3]
+                [entrevista,seleccionados,enproceso]
             ]
 
         });
