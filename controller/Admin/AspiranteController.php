@@ -17,7 +17,7 @@ class AspiranteController{
                                      INNER JOIN tbl_seleccionado ON tbl_usuariovacante.id_seleccionado=tbl_seleccionado.id_seleccionado";
         $listado=$obj->consult($sql);
         // consulta para los graficos y saber cuantos usuarios hay y demás
-        $sql="SELECT COUNT(usu_id) FROM tbl_usuario";
+        $sql="SELECT COUNT(usu_id) FROM tbl_usuario WHERE rol_id=2";
         $contador=$obj->consult($sql);
       foreach ($contador as $key) {
         $suma=$key['COUNT(usu_id)'];
@@ -27,19 +27,19 @@ class AspiranteController{
         $yaesta=array();
         $cont=0;
         //consulta para ver cuantos han aplicadoa  una vacante
-        $sql="SELECT * FROM tbl_usuario";
+        $sql="SELECT * FROM tbl_usuario where rol_id=2";
         $aplicados=$obj->consult($sql);
         
         foreach ($aplicados as $apli) {
           array_push($validar,$apli["usu_id"]);
           array_push($yaesta,0);
         }
-        $sql="SELECT usu_id FROM tbl_usuario";
+        $sql="SELECT usu_id FROM tbl_usuariovacante";
         $relacionado=$obj->consult($sql);
 
-        foreach ($variable as $key => $value) {
+        foreach ($relacionado as $rela) {
           for($i=0;$i<count($validar);$i++){
-            if($validar[$i]==$apli["usu_id"] && $yaesta[$i]==0){
+            if($validar[$i]==$rela["usu_id"] && $yaesta[$i]==0){
               $yaesta[$i]=1;
               $cont++;
             }
@@ -47,7 +47,7 @@ class AspiranteController{
         }
        
         $aplicado=$cont;
-
+        $noaplicados=$suma-$aplicado;
         include_once '../view/Admin/Aspirante/Aspirantelistado.php';
 
     }
@@ -265,16 +265,18 @@ public function filtroadicional(){
     }
 
 }
-
+///GRAFICOS DEL ADMIN
 public function graficos(){
   $obj= new AspiranteVacantesModel();
-  echo "<div class='col-md-6'>
+  echo "<div class='col-md-6 text-center'>
   <div class='ct-chart ct-golden-section' id='chart1'></div>
+  <label>Número de aplicaciones, número de personas en proceso y número de entrevistas pendientes</label>
 </div>
 
 
-<div class='col-md-6'>
+<div class='col-md-6 text-center'>
   <div class='ct-chart ct-golden-section' id='chart2'></div>
+  <label>Número de usuarios sin aplicar, número de usuarios aplicados y número de usuarios</label>
 </div>";
 }
 

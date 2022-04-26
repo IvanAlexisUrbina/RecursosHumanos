@@ -26,16 +26,15 @@ if($_SESSION['rolId']==1){
                     <a onclick="window.open('<?= getUrl('Excel','Excel', 'postExcel')?>')"
                         class='btn btn-success btn-sm' id="" title='Exportar informacion'><i
                             class='fa fa-file-excel-o'></i></a><small>Aquí generas un reporte en excel de todos los
-                        usuarios que se han inscrito*</small>
+                        usuarios que se han inscrito*</small><br>
+                        <label for="">Graficos</label>
                 </div>
-                <label for="">Graficos</label><br>
-                <div id="contenedorgraficos" class="col-md-12 eo row justify-content-start">
-
-                 
-
+               
+                <div id="contenedorgraficos" class="col-md-12 row justify-content-start eo">
+                
                 </div>
             </div>
-            <div class="  row">
+            <div class="row">
                 <div class="  col-sm-12">
 
                     <div class="  card-box table-responsive">
@@ -77,40 +76,41 @@ if($_SESSION['rolId']==1){
     </div>
 </div>
 </div>
+<!-- url que me lleva a la funcion -->
 <input id="grafico" type="hidden" data-url="<?php echo getUrl("Admin","Aspirante","Graficos",false,"ajax");?>">
 
-
+<!-- los inputs que mandar valor para los graficos -->
 <input id="listado" type="hidden" value="<?php echo $suma?>">
 <input id="aplicado" type="hidden" value="<?php echo $aplicado?>">
 <input id="noaplicado" type="hidden" value="<?php echo $noaplicados?>">
-
-
 
 <script>
     function load() {
         var url = $("#grafico").attr("data-url");
         var listado=$("#listado").val();
+        var aplicado=$("#aplicado").val();
+        var noaplicado=$("#noaplicado").val();
         $.ajax({
             url: url,
             type: "POST",
             success: function(datos) {
-                console.log(datos);
-            $("#contenedorgraficos").html(`${datos}`);
-                 // Initialize a Line chart in the container with the ID chart1
-     new Chartist.Line('#chart1', {
-            labels: [1, 2, 3, 4],
-            series: [
-                [100, 120, 180, 200]
-            ]
-        });
-
+        $("#contenedorgraficos").html(`${datos}`);
         // Initialize a Line chart in the container with the ID chart2
         new Chartist.Bar('#chart2', {
-            labels: ["Usuarios", 2, 3],
+            labels: ["No aplicados", "Aplicados","Usuarios"],
             series: [
-                [5, 2, listado]
+                [noaplicado, aplicado, listado]
             ]
+
         });
+        new Chartist.Bar('#chart1', {
+            labels: ["Para Entrevista","Seleccionados","En proceso"],
+            series: [
+                [1,2,3]
+            ]
+
+        });
+        /////////////////////////////////////////
             }
         });
          

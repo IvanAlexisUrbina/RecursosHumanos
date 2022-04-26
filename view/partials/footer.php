@@ -4,13 +4,13 @@
 </div>
 
 <!-- jQuery -->
-<script src="vendors/jquery/dist/moment.min.js"></script>
+
 
 <script src="vendors/jquery/dist/jquery.min.js"></script>
 
 <script src="vendors/jquery/dist/global.js"></script>
 
-
+<script src="vendors/jquery/dist/moment.min.js"></script>
 
 
 <!--sweet-->
