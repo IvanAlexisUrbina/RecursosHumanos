@@ -23,7 +23,7 @@ if($_SESSION['rolId']==1){
 
                 <div class="col-md-6">
                     <label for="">Reporte</label><br>
-                    <a onclick="window.open('<?= getUrl('Excel','Excel', 'postExcel')?>')"
+                    <a href="../controller/Excel/templateExcel.php"
                         class='btn btn-success btn-sm' id="" title='Exportar informacion'><i
                             class='fa fa-file-excel-o'></i></a><small>Aquí generas un reporte en excel de todos los
                         usuarios que se han inscrito*</small><br>

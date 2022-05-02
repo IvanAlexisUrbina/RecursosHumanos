@@ -1,59 +1,46 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+require 'C:/xampp/htdocs/RecursosHumanos/web/vendor/autoload.php';
+include_once '../lib/conf/connection.php';
 
-require_once('vendor/autoload.php');
+use  PhpOffice\PhpSpreadsheet\Spreadsheet;
+use  PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use  PhpOffice\PhpSpreadsheet\IOFactory;
 
-use phpDocumentor\Reflection\Types\Null_;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-use PhpOffice\PhpSpreadsheet\IOFactory;
-use PhpOffice\PhpSpreadsheet\Worksheet\MemoryDrawing;
-use PhpOffice\PhpSpreadsheet\Style\Color;
-use PhpOffice\PhpSpreadsheet\Style\Border;
-use Symfony\Component\Validator\Constraints\Length;
-use PhpOffice\PhpSpreadsheet\Calculation\MathTrig\Sum;
 
-            $spreadsheet = new Spreadsheet();
-            
-            $spreadsheet->getProperties()
-                ->setTitle('PHP Download')
-                ->setSubject('A PHPExcel')
-                ->setDescription('A simple download PHP')
-                ->setCreator('php-download.com')
-                ->setLastModifiedBy('php-download.com');
 
-            $filename = "Reporte.Xlsx";
-            
-            
 
-            $hoja = $spreadsheet->getActiveSheet();
-            //Bordes de los headers de la tabla
-            $hoja->setTitle("PRUEBA EXCEL");
-            //Encabezado de la tabla
-            $hoja->setCellValue("A1","CODIGO");
-            $hoja->setCellValue("B1","CLIENTE");
-            $hoja->setCellValue("C1","PRODUCTO");
-            $hoja->setCellValue("D1","CANTIDAD");
-            $hoja->setCellValue("E1","FECHA DE CREACION");
-            $hoja->setCellValue("F1","ENCARGADO");
+$spreadsheet = new Spreadsheet();
+$sheet = $spreadsheet->getActiveSheet();
+$sheet ->setCellValue('A1','     Id');
+$sheet ->setCellValue('A2','vac_1');
 
-            //$writer = new Xlsx($excel2);
+$sheet ->setCellValue('C1','       NOMBRE');
+$sheet ->setCellValue('C2','Michael andres');
 
-            //$ruta = "Excel/".$filename;
 
-            /*try {
-                $writer->save($ruta);
-            } catch (Exception $e) {
-                echo $e->getMessage();
-            }*/
-            header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-            header('Content-Disposition: attachment;filename="'.urlencode($filename).'"');
-            header('Cache-Control: max-age=0');
+$sheet ->setCellValue('F1','      APELLIDO');
+$sheet ->setCellValue('F2','cuadrado rodriguez');
 
-            $objWriter =IOFactory::createWriter($spreadsheet,'Xlsx');
-            $objWriter->save('C:/xampp/htdocs/RecursosHumanos/');
-            //unlink($ruta);
-    
+
+$sheet ->setCellValue('I1','      NUMERO DOCUMENTO');
+$sheet ->setCellValue('I2',  '       11155465');
+
+
+$sheet ->setCellValue('L1','      AÑOS DE EXPERIENCIA LABORAL');
+$sheet ->setCellValue('L2','                  0');
+
+
+$filename ='Lista Aspirante'.time().'xlsx';
+
+header('Content-type: application/vnd.ms-excel');
+header('Content-Disposition: attachment; filename="'.$filename. date("d-m-Y") . '.xlsx"');
+header ('Cache-Control: max-age = 0' );
+
+header ('Cache-Control: max-age = 1' );
+
+ob_end_clean();
+$writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
+$writer->save('php://output');
+
+
 ?>

@@ -911,18 +911,18 @@ $(document).ready(function() {
     });
     ////////////////
     ///exportar excel de listado aspirante
-    $(document).on("click", "#exportarlistado", function() {
-        var url = $(this).attr("data-url");
-        $.ajax({
-            url: url,
-            type: "POST",
-            success: function(datos) {
+    // $(document).on("click", "#exportarlistado", function() {
+    //     var url = $(this).attr("data-url");
+    //     $.ajax({
+    //         url: url,
+    //         type: "POST",
+    //         success: function(datos) {
 
 
-            }
-        });
+    //         }
+    //     });
 
-    });
+    // });
     ///////////////////////////////////////////////
 
     //////////////////////////////////////////////
