@@ -5,7 +5,6 @@ include_once '../model/Admin/AspiranteVacantesModel.php';
 //aplicados a una vacante
 
 
-
 class AspiranteController{
 
       //SELECCIONA TODOS LOS ASPIRANTES QUE ESTAN REGISTRADOS EN ALGUNA VACANTE Y SE PUEDE VISUALIZAR SU ESTADO

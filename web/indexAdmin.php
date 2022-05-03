@@ -13,9 +13,8 @@
                     echo "<div class='clearfix'></div>";
                     echo "<div class='row'>";
                         echo "<div class='col-md-12 col-sm-12'>";
-                        echo "<div class=''>";
-                      
-                   // include_once '../view/partials/fondoanimado.php';
+                        echo "<div class=''>";  
+                  // include_once '../view/partials/fondoanimado.php';
 
                             if (isset($_GET['modulo'])) {
                                 resolve();

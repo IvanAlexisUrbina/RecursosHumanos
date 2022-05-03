@@ -26,7 +26,7 @@ foreach ($vacantes as $vac) {
             </div>
             <div id="aplicaroculto" class="col-md-12 form-group">
                 <label>Fecha de cierre de la vacante</label>
-                <input type="date" class="form form-control"></input>
+                <input type="date" name="cierre" class="form form-control"></input>
             </div>
 
             <div class="modal-footer">
