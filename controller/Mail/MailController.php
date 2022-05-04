@@ -63,7 +63,7 @@ class MailController
                 //Content
                 $mail->isHTML(true);// Set email format to HTML
                 $mail->Subject = 'Restablecimiento De Contraseña';
-                $mail->Body    = "Ha solicitado cambiar contraseña, copie este codigo <b>$token</b> e ingreselo en el sistema o dele clic al siguiente enlace <strong>http://localhost/GestionH6/web/ajax.php?modulo=Mail&controlador=Mail&funcion=getToken</strong>, para poder restablecer tu contraseña<br><b>Si no solicito ningun restablecimiento de su contraseña en el sistema GERS S.A.S, ignore este mensaje.</b>";
+                $mail->Body    = "Ha solicitado cambiar contraseña, copie este codigo <b>$token</b> e ingreselo en el sistema o dele clic al siguiente enlace <strong>http://localhost/RecursosHumanos/web/ajax.php?modulo=Mail&controlador=Mail&funcion=getToken</strong>, para poder restablecer tu contraseña<br><b>Si no solicito ningun restablecimiento de su contraseña en el sistema GERS S.A.S, ignore este mensaje.</b>";
                 //$mail->AltBody = '';
 
                 $mail->send();
@@ -114,7 +114,7 @@ class MailController
                 //aqui va una alerta para mostrar que ya se cambio 
                 echo '<script>alert("La contraseña se ha cambiado correctamente...
                 Porfavor ingresa con tu numero de documento y luego cambia tu contraseña");</script>';
-               //redirect(getUrl("Access", "Access", "login"));   
+               redirect(getUrl("Access", "Access", "login"));   
             }
         }
     }
