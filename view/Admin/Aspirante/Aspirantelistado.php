@@ -1,12 +1,12 @@
 <?php 
 if($_SESSION['rolId']==1){
 ?>
-<div class=" col-md-12 col-sm-12 ">
-    <div class="x_title" class="">
+<div class=" col-md-12 col-sm-12">
+    <div>
         <small class="xc_color">ASPIRANTES REGISTRADOS <br>
     </div>
-    <div class="  x_panel">
-        <div class="  x_title">
+    <div class="x_panel">
+        <div class="">
             <ul class=" nav navbar-right panel_toolbox">
                 <li>
 
@@ -133,3 +133,4 @@ if($_SESSION['rolId']==1){
     redirect("indexUsu.php");
 }
 ?>
+

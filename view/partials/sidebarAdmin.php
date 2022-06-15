@@ -35,6 +35,7 @@
 
             
             ?>
+             <li><a href="<?php echo getUrl("Admin","Aspirante","bandejaentrada");?>"><i class="fa fa-bell"></i>Aplicaciones</a></li>
             <li><a><i class="fa fa-group"></i>Vacantes<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
                 <li><a href="<?php echo getUrl("Admin","Formulario","create");?>">Generar vacantes</a></li>

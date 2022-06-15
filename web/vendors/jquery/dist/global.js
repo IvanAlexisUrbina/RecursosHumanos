@@ -235,56 +235,7 @@ $(document).ready(function() {
 
             }
         })
-    });
-    //fade divs
-    $(document).on("click", "#area1", function() {
-        $(this).closest("#actividades").find("#div1").fadeToggle(300)
-    });
-    $(document).on("click", "#area2", function() {
-        $(this).closest("#actividades").find("#div2").fadeToggle(300)
-    });
-    $(document).on("click", "#area3", function() {
-        $(this).closest("#actividades").find("#div3").fadeToggle(300)
-    });
-    $(document).on("click", "#area4", function() {
-        $(this).closest("#actividades").find("#div4").fadeToggle(300)
-    });
-    $(document).on("click", "#area5", function() {
-        $(this).closest("#actividades").find("#div5").fadeToggle(300)
-    });
-    $(document).on("click", "#area6", function() {
-        $(this).closest("#actividades").find("#div6").fadeToggle(300)
-    });
-    $(document).on("click", "#area7", function() {
-        $(this).closest("#actividades").find("#div7").fadeToggle(300)
-    });
-    $(document).on("click", "#area8", function() {
-        $(this).closest("#actividades").find("#div8").fadeToggle(300)
-    });
-    $(document).on("click", "#area9", function() {
-        $(this).closest("#actividades").find("#div9").fadeToggle(300)
-    });
-    $(document).on("click", "#area10", function() {
-        $(this).closest("#actividades").find("#div10").fadeToggle(300)
-    });
-    $(document).on("click", "#area11", function() {
-        $(this).closest("#actividades").find("#div11").fadeToggle(300)
-    });
-    //
-    $(document).on("click", "#actividadesmore", function() {
-        var url = $(this).attr("data-url");
-        var aqui = $(this).next();
-        var id = $(this).val();
-        console.log(id);
-        $.ajax({
-            url: url,
-            type: "POST",
-            success: function(datos) {
-                $(aqui).html(datos);
-                console.log(datos);
-            }
-        })
-    });
+    })
     //
     $(document).ready(function() {
         var table = $('#data').DataTable({
@@ -924,6 +875,68 @@ $(document).ready(function() {
 
     // });
     ///////////////////////////////////////////////
-
+    // para que las actividades se ejecuten dependiendo de cada formulario /////////////////USUARIO
+    $(document).on("click", "#actividadesmore", function() {
+        var url = $(this).attr("data-url");
+        var aqui = $(this).next();
+        $.ajax({
+            url: url,
+            type: "POST",
+            success: function(datos) {
+                $(aqui).html(datos);
+                console.log(datos);
+            }
+        })
+    });
     //////////////////////////////////////////////
+    // para que las actividades se ejecuten dependiendo de cada formulario ///////////ADMINISTRADOR 
+    $(document).on("click", "#actividadesmore2", function() {
+        var url = $(this).attr("data-url");
+        var aqui = $(this).next();
+        $.ajax({
+            url: url,
+            type: "POST",
+            success: function(datos) {
+                $(aqui).html(datos);
+                console.log(datos);
+            }
+        })
+    });
+    //////////////////////////////////////////////
+    // DATA TABLE el id para la tabla del principio
+    $(document).ready(function(){
+        var table = $('#bandeja').DataTable({
+            
+            responsive: true,
+            orderCellsTop: true,
+            fixedHeader: true,
+            
+            language: {
+                
+                "decimal": "",
+                "emptyTable": "No hay datos",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
+                "infoEmpty": "Mostrando 0 a 0 de 0 registros",
+                "infoFiltered": "(Filtro de _MAX_ registros Totales)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Numero de filas _MENU_",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "zeroRecords": "No se encontraron resultados",
+                "paginate": {
+
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Proximo",
+                    "previous": "Anterior"
+                }
+            },
+            "order": [[ 1, "desc" ]]
+        });
+    });
+
+    
+
 })

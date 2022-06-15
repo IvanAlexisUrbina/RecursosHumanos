@@ -40,6 +40,10 @@ class ComposerStaticInitb9e6e18681d3fe7e796014812e67c26f
             'Mpdf\\' => 5,
             'Matrix\\' => 7,
         ),
+        'H' => 
+        array (
+            'Http\\Message\\' => 13,
+        ),
         'D' => 
         array (
             'DeepCopy\\' => 9,
@@ -99,6 +103,10 @@ class ComposerStaticInitb9e6e18681d3fe7e796014812e67c26f
         'Matrix\\' => 
         array (
             0 => __DIR__ . '/..' . '/markbaker/matrix/classes/src',
+        ),
+        'Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-http/message-factory/src',
         ),
         'DeepCopy\\' => 
         array (

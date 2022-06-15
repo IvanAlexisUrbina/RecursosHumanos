@@ -1,74 +1,82 @@
-* { 
-    margin: 0; 
-    padding: 0; 
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
-.contenedor{
+
+.contenedor {
     width: 100%;
     padding: 15px;
     background-color: black;
     color: white;
     border-color: white;
+    border-radius: 35px;
 }
-.formulario{
+
+.formulario {
     background: rgba(0, 0, 0, 0.959);
-    margin-top :50px;
+    margin-top: 50px;
     margin-bottom: 50px;
     padding: 3px;
-       
-    
 }
-h1{
+
+h1 {
     text-align: center;
     color: white;
     font-size: 40px;
-    
 }
+
 input[type="text"],
-input[type="password"]{
+input[type="password"] {
     font-size: 20px;
     width: 82%;
     padding: 10px;
     border: none;
     border-radius: 5px;
-    
 }
-.input-contenedor{
+
+.input-contenedor {
     margin-bottom: 15px;
     border: 1px solid white;
 }
-.icon{
+
+.icon {
     min-width: 50px;
     text-align: center;
-    color:white;
+    color: white;
 }
-.button{
+
+.button {
     border: none;
     width: 100%;
     color: white;
     font-size: 20px;
-    background:  #1a2537;
+    background: #1a2537;
     padding: 15px 20px;
-    border-radius: 5px;
+    border-radius: 30px;
     cursor: pointer;
 }
-.button:hover{
-    background:white;
+
+.button:hover {
+    background: white;
     color: black;
 }
-p{
+
+p {
     text-align: center;
 }
-.link{
+
+.link {
     text-decoration: none;
     font-weight: 600;
 }
-.link:hover{
-     color: #181864;
+
+.link:hover {
+    color: black;
 }
-@media(min-width:768px)
-{
-    .formulario{
+
+@media(min-width:768px) {
+    .formulario {
         margin: auto;
         width: 500px;
         margin-top: 50px;
@@ -76,57 +84,43 @@ p{
         border-radius: 2%;
     }
 }
-.olvide{
+
+.olvide {
     margin-left: 30%;
 }
-#fondologin{
+
+#fondologin {
     width: 100%;
     height: 100%;
 }
-.form-box input[type="text"]:focus,.form-box input[type="email"]:focus,.form-box input[type="password"]:focus,.form-box select[type="text"]:focus {  
-    border-color: #181864;
 
+.form-box input[type="text"]:focus,
+.form-box input[type="email"]:focus,
+.form-box input[type="password"]:focus,
+.form-box select[type="text"]:focus {
+    border-color: #181864;
 }
 
-#particles-js{
-	height: 100vh; 
-	width: 100%;
+#particles-js {
+    height: 100vh;
+    width: 100%;
     position: fixed;
     z-index: -1;
     background-color: #181864;
-    
 }
-#logologin{
+
+#logologin {
     width: 21%;
-    height:55px;
+    height: 55px;
     margin-left: 39%;
 }
-html{
+
+html {
     padding: 0;
     margin: 0;
     display: grid;
 }
-.text-white{
+
+.text-white {
     color: white;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

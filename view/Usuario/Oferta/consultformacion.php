@@ -1,42 +1,29 @@
+<?php 
+if($_SESSION['rolId']==2){
+?>
 <div class="eo #contenedor_arriba x_content">
-    <div class="contenedor_de_datos x_panel">
-
-        <nav class="navbar navbar-dark navbar-expand-sm" style="background-color:#181864;">
-            <a class="navbar-brand" href="#">
-                Formación
-            </a>
-        </nav>
-
-
-        <div class="card" style="border-radius: 5px; border:2px solid black;">
-
-
-
-            <div class="card-body p-4">
-
-                <div class="col-md-12">
-                </div>
-                <div class=" x_panel">
+        <div style="text-align:center;" class="x_title">
+            <h5  style=" font-weight: bolder;">FORMACIÓN</h5>
+        </div>
                     <form id="alertaformacion" action="<?php echo getUrl("Usuario","Ofertas","postformacion")?>"
                         method="post" enctype="multipart/form-data">
                         <div class="row justify-content-start">
                             <div id="cont_tituloname" class="col-md-6">
-                                <label class="titulos_negrita">Titulo obtenido*</label>
+                                <label class="titulos_negrita">Titulo obtenido<span style="color:red">*</span></label>
                                 <input type="text" id="form_tituloname" name="form_tituloname" class="estiloinput form-control oferta">
                                 <p class="error"><small>solo debe contener letras.</small>
                                 </p>
                             </div>
-
-                            <div class="col-md-6">
-                                <label class="titulos_negrita">Adjunte titulo profesional*</label>
-                                <input require id='certificadodeestudio' placeholder="" type="file"
-                                    name="form_titulo_profesional" class="eme2 estiloinput">
-                               
+                            <div id="cont_fecha_fin"class="col-md-6">
+                                <label class="titulos_negrita">Fecha graduación<span style="color:red">*</span></label>
+                                <input type="date" id="form_fecha_fin" name="form_fecha_fin" placeholder="Ejm: ingles, frances..."
+                                    class="estiloinput form-control oferta">
+                                <p class="error"><small>solo debe contener letras.</small>
+                                </p>
                             </div>
-
                             <div class="col-md-6">
-                                <label class="titulos_negrita">Nivel de educación*</label>
-                                <select id="form_nivel_de_educacion" style="border-radius:5px;border:2px solid #73879C;" class="form form-control"
+                                <label class="titulos_negrita">Nivel de educación<span style="color:red">*</span></label>
+                                <select id="form_nivel_de_educacion"  class="eme2 estiloinput form form-control"
                                     name="form_nivel_de_educacion">
                                     <option selected="true" disabled>Nivel de educación</option>
                                     <option value="Educación Básica Primaria">Educación Básica Primaria</option>
@@ -55,26 +42,24 @@
                                 
                             </div>
                             <div id="cont_nombre" class="col-md-6">
-                                <label class="titulos_negrita">Nombre de la Institución o Universidad*</label>
+                                <label class="titulos_negrita">Nombre de la Institución o Universidad<span style="color:red">*</span></label>
                                 <input type="text" id="form_nombre" name="form_nombre" class="estiloinput form-control oferta">
                                 <p class="error"><small>solo debe contener letras.</small>
                                 </p>
                             </div>
                             <div id="cont_conocimientos" class="col-md-6">
-                                <label class="titulos_negrita">Conocimientos o habilidades*</label>
+                                <label class="titulos_negrita">Conocimientos o habilidades<span style="color:red">*</span></label>
                                 <input type="text" id="form_conocimientos" name="form_conocimientos"
                                     placeholder="Ejm: word, excel, solidworks..."
                                     class="estiloinput form-control oferta">
                                 <p class="error"><small>solo debe contener letras.</small>
                                 </p>
                             </div>
-
-                            <div id="cont_fecha_fin"class="col-md-6">
-                                <label class="titulos_negrita">Fecha graduación*</label>
-                                <input type="date" id="form_fecha_fin" name="form_fecha_fin" placeholder="Ejm: ingles, frances..."
-                                    class="estiloinput form-control oferta">
-                                <p class="error"><small>solo debe contener letras.</small>
-                                </p>
+                           <div class="col-md-6">
+                                <label class="titulos_negrita">Adjunte titulo profesional<span style="color:red">*</span></label>
+                                <input require id='certificadodeestudio' placeholder="" type="file"
+                                    name="form_titulo_profesional" class="eme2 estiloinput">
+                               
                             </div>
                             <div class="col-md-6"></div>
                             <div class="col-md-6"></div>
@@ -85,88 +70,84 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" name="submit" class="btn btn-primary">Agregar</button>
-                </div>
-                </form>
-
-                <a href="<?php echo getUrl("Usuario","Ofertas","experiencia")?>" type="button"
-                    class="btn btn-success">Siguiente</a>
-            </div>
-            <nav class="navbar navbar-dark navbar-expand-sm" style="background-color:#181864;">
-                <a class="navbar-brand" href="#">
-                    Formación registrada
-                </a>
-            </nav>
+                        <button type="submit" name="submit" class="radios btn btn-primary">Agregar formación</button>     
+                </form>            
             <!--AQUI ESTA EL CONTEDEDOR DE TODA LA FORMACION QUE VAYA  MOSTRAR-->
-            <div class="divcontenedores">
+            <div>
 
+            <div style="text-align:center;" class="x_title">
+                <h5 style=" font-weight: bolder;">FORMACIÓN REGISTRADA</h5>
+            </div>
                 <?php
                foreach($formacion as $form){ ?>
-                <div class="card-body p-4">
-                    <div class="col-md-12">
-                    </div>
-                    <div class="x_panel" style="">
+                
+                    <div class="x_content col-md-12" style="border-top:1px solid black;display:flex;padding:5px 5px 5px 12px;">
                         <form enctype="multipart/form-data">
                             <div class="row justify-content-start">
-                                <div class='col-md-12'>
-                                    <h3 style='color:blue;font-weight:bolder;' class='text-right'>
-                                        <?php echo $form["id_formacion"]?></h3>
-                                </div>
                                 <div class="col-md-6">
-                                    <label class="titulos_negrita">Titulo obtenido*</label>
+                                    <label class="titulos_negrita">Titulo obtenido<span style="color:red">*</span></label>
                                     <input  type="text" value="<?php echo $form["form_tituloname"]?>" readonly
                                         class="estiloinput form-control oferta">
                                 </div>
-
                                 <div class="col-md-6">
-                                    <label class="titulos_negrita">Visualizar titulo profesional*</label><br>
-                                    <a id='consultarcertificado' type='button'
-                                        data-url="<?php echo getUrl("Usuario","Ofertas","consultarcertificado",array("id_formacion" => $form['id_formacion']),"ajax")?>"
-                                        class='btn btn-primary'><i class='fa fa-file'></i></a>
+                                    <label class="titulos_negrita">Fecha graduación<span style="color:red">*</span></label>
+                                    <input type="text" readonly value="<?php echo $form["form_fecha_fin"]?>"
+                                        placeholder="Ejm: ingles, frances..." class="estiloinput form-control oferta">
                                 </div>
-
                                 <div class="col-md-6">
-                                    <label class="titulos_negrita">Nivel de educación*</label>
+                                    <label class="titulos_negrita">Nivel de educación<span style="color:red">*</span></label>
                                     <input type="text" readonly value="<?php echo $form["form_nivel_de_educacion"]?>"
                                         id="" class="estiloinput form-control oferta" readonly>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="titulos_negrita">Nombre de la institución o universidad*</label>
+                                    <label class="titulos_negrita">Nombre de la institución o universidad<span style="color:red">*</span></label>
                                     <input type="text" value="<?php echo $form["form_nombre"]?>" readonly
                                         class="estiloinput form-control oferta">
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="titulos_negrita">Conocimientos o habilidades*</label>
+                                    <label class="titulos_negrita">Conocimientos o habilidades<span style="color:red">*</span></label>
                                     <input readonly value="<?php echo $form["form_conocimientos"]?>" type="text"
                                         class="estiloinput form-control oferta">
                                 </div>
 
+                               
+                                
                                 <div class="col-md-6">
-                                    <label class="titulos_negrita">Fecha graduación*</label>
-                                    <input type="text" readonly value="<?php echo $form["form_fecha_fin"]?>"
-                                        placeholder="Ejm: ingles, frances..." class="estiloinput form-control oferta">
+                                   <div></div>
+                                    <a id='consultarcertificado' type='button'
+                                        data-url="<?php echo getUrl("Usuario","Ofertas","consultarcertificado",array("id_formacion" => $form['id_formacion']),"ajax")?>"
+                                    class='btn btn-primary radios'><i class='fa fa-file'></i></a>
                                 </div>
+
                                 <div class="col-md-6"></div>
                                 <div class="col-md-6"></div>
                                 <div class="col-md-6">
                                     <br>
                                     <button id='eliminarformacion'
                                         data-url="<?php echo getUrl("Usuario","Ofertas","Eliminarforma",array("id_formacion"=>$form['id_formacion']),"ajax")?>"
-                                        class='btn btn-danger' value='Eliminar'>Eliminar</button><span><small>*Aquí
-                                            puede eliminar la información registrada*</small></span>
+                                        class='btn btn-danger radios' value='Eliminar'>Eliminar</button>
                                     <div class="col-md-6">
                                     </div>
                                 </div>
                             </div>
-                    </div>
-                </div>
-                <?php      } ?>
-            </div>
+                            </div>
+                <?php      } ?> 
+                <div class="col-md-3" style="float:right;">
+                <a href="<?php echo getUrl("Usuario","Ofertas","documento")?>" type="button"
+                    class="btn btn-secondary radios">Atrás</a>
+                <a href="<?php echo getUrl("Usuario","Ofertas","experiencia")?>" type="button"
+                    class="btn btn-success radios">Siguiente</a>
+                </div>  
+                
+                <?php
+                }else{
+                    session_destroy();
+                    redirect("login.php");
+                }
+                ?>
 <script>
-    const registro2 = document.getElementById('alertaformacion');
+const registro2 = document.getElementById('alertaformacion');
 const inputs1 = document.querySelectorAll('#alertaformacion input');
-
-
 const expresiones2 = {
     usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
     password: /^.{4,12}$/, // 4 a 12 digitos.

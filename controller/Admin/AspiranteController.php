@@ -172,37 +172,18 @@ class AspiranteController{
       // para poder aplicar los filtros de los aspirantes que se hayan registrado
 public function filtroadicional(){
           $obj= new AspiranteVacantesModel();
-          //actividades
-          $sql="SELECT * FROM tbl_actividades WHERE id_area=1";
-          $actividades1=$obj->consult($sql);
-          $sql="SELECT * FROM tbl_actividades WHERE id_area=2";
-          $actividades2=$obj->consult($sql);
-          $sql="SELECT * FROM tbl_actividades WHERE id_area=3";
-          $actividades3=$obj->consult($sql);
-          $sql="SELECT * FROM tbl_actividades WHERE id_area=4";
-          $actividades4=$obj->consult($sql);
-          $sql="SELECT * FROM tbl_actividades WHERE id_area=5";
-          $actividades5=$obj->consult($sql);
-          $sql="SELECT * FROM tbl_actividades WHERE id_area=6";
-          $actividades6=$obj->consult($sql);
-          $sql="SELECT * FROM tbl_actividades WHERE id_area=7";
-          $actividades7=$obj->consult($sql);
-          $sql="SELECT * FROM tbl_actividades WHERE id_area=8";
-          $actividades8=$obj->consult($sql);
-          $sql="SELECT * FROM tbl_actividades WHERE id_area=9";
-          $actividades9=$obj->consult($sql);
-          $sql="SELECT * FROM tbl_actividades WHERE id_area=10";
-          $actividades10=$obj->consult($sql);
-          $sql="SELECT * FROM tbl_actividades WHERE id_area=11";
-          $actividades11=$obj->consult($sql);
-          //fin
+         
           $aplicados=$_GET['id_vacante'];
-          $sql="SELECT vac_nombre FROM tbl_vacante WHERE id_vacante='".$aplicados."'";
+
+          $sql="SELECT * FROM tbl_area";
+          $areas=$obj->consult($sql);
+
+          $sql="SELECT vac_nombre,id_vacante FROM tbl_vacante WHERE id_vacante='".$aplicados."'";
           $name=$obj->consult($sql);
           foreach ($name as $nam) {
+            $id=$nam['id_vacante'];
             $nombre=$nam['vac_nombre'];
           }
-
           $sql = "SELECT tbl_usuario.usu_id,tbl_usuario.usu_nombre,tbl_usuario.usu_apellido,
           tbl_usuario.usu_telefono,tbl_usuario.usu_correo,tbl_vacante.id_vacante,tbl_vacante.vac_nombre,tbl_seleccionado.selec_nombre,
           tbl_vacante.vac_nombre,SUM(hist_añosxp)
@@ -215,12 +196,8 @@ public function filtroadicional(){
                              WHERE tbl_vacante.id_vacante='".$aplicados."'
                              GROUP BY  tbl_usuario.usu_id,tbl_usuario.usu_nombre,tbl_usuario.usu_apellido,
           tbl_usuario.usu_telefono,tbl_usuario.usu_correo,tbl_vacante.id_vacante,
-          tbl_vacante.vac_nombre";
-   
-          $Usuario=$obj->consult($sql);
-          
-         
-
+          tbl_vacante.vac_nombre";  
+          $Usuario=$obj->consult($sql);         
           include_once '../view/Admin/Aspirante/filtroadicional.php'; 
       }
 
@@ -229,7 +206,7 @@ public function filtroadicional(){
         $obj=new AspiranteVacantesModel();
         $aplicados=$_GET['id_vacante'];
         //Cadena de texto dependiendo cuales seleccionas.
-        $id_actividades=json_decode(stripslashes($_POST['data']));
+        $id_area=json_decode(stripslashes($_POST['data']));
         //vectores que utilizaremos
         $seleccionados=array();
         $yaesta=array();
@@ -245,7 +222,7 @@ public function filtroadicional(){
         }
   
         //todos los seleccionados
-        foreach($id_actividades as $id_actividad){
+        foreach($id_area as $id_area){
         $sql="SELECT tbl_usuario.usu_id,tbl_usuario.usu_nombre,tbl_usuario.usu_apellido,
         tbl_usuario.usu_telefono,tbl_usuario.usu_correo,tbl_vacante.id_vacante,tbl_seleccionado.selec_nombre,
         tbl_vacante.vac_nombre,SUM(hist_añosxp)
@@ -256,15 +233,14 @@ public function filtroadicional(){
                              INNER JOIN tbl_vacante ON tbl_usuariovacante.id_vacante=tbl_vacante.id_vacante)
                              INNER JOIN tbl_historiadetalle ON tbl_usuario.usu_id=tbl_historiadetalle.usu_id
                              WHERE tbl_vacante.id_vacante='".$aplicados."'
-                             AND tbl_historiadetalle.id_actividades='".$id_actividad."'
+                             AND tbl_historiadetalle.id_area='".$id_area."'
                              GROUP BY  tbl_usuario.usu_id,tbl_usuario.usu_nombre,tbl_usuario.usu_apellido,
         tbl_usuario.usu_telefono,tbl_usuario.usu_correo,tbl_vacante.id_vacante,
         tbl_vacante.vac_nombre";
-        $usuariosactividades=$obj->consult($sql);
+        $usuariosarea=$obj->consult($sql);
 
- 
         //los que estan en la tabla relaccionados
-        foreach($usuariosactividades as $usu){
+        foreach($usuariosarea as $usu){
         //   //evaluando que no este repetido
           for($i=0; $i<count($seleccionados);$i++){    //no esta impreso
               if($seleccionados[$i]==$usu["usu_id"] && $yaesta[$i]==0){
@@ -298,6 +274,37 @@ public function graficos(){
   <div class='ct-chart ct-golden-section' id='chart2'></div>
   <label>Número de usuarios sin aplicar, número de usuarios aplicados y número de usuarios</label>
 </div>";
+}
+
+//consult de usuario en admin
+public function  actividadesdinamicas(){
+  $obj = new AspiranteVacantesModel();
+  $form=$_GET['id_hist'];
+  $sql="SELECT tbl_area.are_nombre,tbl_area.id_area
+  FROM ((tbl_area 
+  INNER JOIN tbl_historiadetalle ON tbl_historiadetalle.id_area=tbl_area.id_area)
+  INNER JOIN tbl_historial_de_trabajo ON tbl_historial_de_trabajo.id_hist=tbl_historiadetalle.id_hist)
+  INNER JOIN tbl_usuario ON tbl_historial_de_trabajo.usu_id=tbl_usuario.usu_id
+  WHERE tbl_historiadetalle.id_hist='".$form."'";
+  $areaschecked=$obj->consult($sql);
+
+  foreach ($areaschecked as $area) {
+  
+  echo "<div style='float:left;' class='col-md-5'>
+    <b><label style='font-size:20px;'>'". $area['are_nombre']."'</label> <input type='checkbox' disabled checked value='". $area['id_area']."'></b>
+    </div>";
+  }
+}
+//consult para los que han aplicado a las vacantes
+public function bandejaentrada(){
+    $obj=new AspiranteVacantesModel();
+    $sql="SELECT tbl_vacante.vac_nombre,tbl_usuariovacante.usuvac_fecha,tbl_vacante.id_vacante
+          FROM tbl_vacante
+          INNER JOIN tbl_usuariovacante 
+          ON tbl_vacante.id_vacante=tbl_usuariovacante.id_vacante 
+          ORDER BY usuvac_fecha DESC";
+    $bandeja=$obj->consult($sql);
+    include_once '../view/partials/bandejadeentrada.php'; 
 }
 
 }

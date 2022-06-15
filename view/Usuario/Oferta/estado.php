@@ -1,3 +1,6 @@
+<?php 
+if($_SESSION['rolId']==2){
+?>
 <div class="x_content">
     <small class="xc_color">SU POSICIÓN EN EL PROCESO DE SELECCIÓN
     </small>
@@ -68,5 +71,9 @@ if ($row==0){
 <?php
         }
     }
+}
+}else{
+    session_destroy();
+    redirect("login.php");
 }
 ?>

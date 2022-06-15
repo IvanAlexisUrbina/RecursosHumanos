@@ -1,12 +1,15 @@
+<?php 
+if($_SESSION['rolId']==2){
+?>
 <div class="eo #contenedor_arriba x_content">
     <form id="aplicarvacante" method="POST" enctype="multipart/form-data"
         action="<?php echo getUrl("Usuario", "Ofertas","postinsert");  ?>">
         <div class="contenedor_de_datos x_panel">
-            <div class="encabezadoForm eme clearfix text-center">
-                APLICAR VACANTE<br>
+            <div class="x_title text-center">
+                <h3 style="font-weight:bolder;">VACANTE<br></h3>
                 <?php
 foreach ($vacantes as $vac) {
-    echo "<b>".$vac['vac_nombre']."</b>";
+    echo "<h3><b>".$vac['vac_nombre']."</b></h3>";
 ?>
                 <?php
 foreach ($usuario as $usu) {
@@ -33,8 +36,8 @@ foreach ($usuario as $usu) {
 
                 <div class="col-md-6">
                     <label class="titulos_negrita">Teléfono/preferido*</label>
-                    <input type="number" placeholder="" class="estiloinput form-control oferta" readonly
-                        value="<?php echo $usu['usu_telefono']?>">
+                    <label type="number" placeholder="" class="estiloinput form-control oferta" readonly
+                        ><?php echo $usu['usu_telefono']?>
                 </div>
 
 
@@ -87,8 +90,8 @@ foreach ($usuario as $usu) {
                     <?php }else{?>
 <a type="button" target="_black"
              
-href="<?php echo 'http://'.$_SERVER['HTTP_HOST'].'/RecursosHumanos'.$usu['usu_hojadevida']?>"
-class="modalhojadevida btn btn-dark"><i class="fa fa-file"></i></a> Aquí puedes visualizar tu hoja de vida*
+href="<?php echo 'https://'.$_SERVER['HTTP_HOST'].'/RecursosHumanos'.$usu['usu_hojadevida']?>"
+class="radios modalhojadevida btn btn-dark"><i class="fa fa-file"></i></a> Aquí puedes visualizar tu hoja de vida*
                 <?php    }  ?>
                 </div>
 <?php } ?>
@@ -98,13 +101,13 @@ class="modalhojadevida btn btn-dark"><i class="fa fa-file"></i></a> Aquí puedes
                 </div>
                 <div class="col-md-6"></div>
                 <div class="col-md-6">
-                    <label class="titulos_negrita">Elegible legalmente para trabajar en el pais de la
-                        vacante*</label><br>
+                    <label class="titulos_negrita">Elegible legalmente para trabajar en el país de la
+                        vacante</label><br>
                     <input type="checkbox" class="form" value="Si" name="usu_elegible">
                    
                 </div>
                 <div class="col-md-6">
-                    <label class="titulos_negrita">Disponible para viajar*</label>
+                    <label class="titulos_negrita">Disponibilidad para viajar</label>
                     <br>
                     <input type="checkbox" name="usu_viajar" value="Si">
                     
@@ -113,13 +116,17 @@ class="modalhojadevida btn btn-dark"><i class="fa fa-file"></i></a> Aquí puedes
                 </div>
 
                 <div class="col-md-12 row justify-content-end">
-                    <a href="<?php echo getUrl("Usuario","Ofertas","consult")?>" class="btn btn-danger">Cancelar</a>
-                    <button type="submit" class="btn btn-primary" value="">Aplicar</button>
+                    <a href="<?php echo getUrl("Usuario","Ofertas","consult")?>" class="radios btn btn-danger">Cancelar</a>
+                    <button type="submit" class="radios btn btn-primary" value="">Aplicar</button>
                 </div>
             </div>
         </div>
     </form>
     <?php
 }
+}
+}else{
+    session_destroy();
+    redirect("login.php");
 }
 ?>

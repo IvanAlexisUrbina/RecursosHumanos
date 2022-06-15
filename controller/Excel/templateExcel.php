@@ -16,23 +16,24 @@ use PhpOffice\PhpSpreadsheet\Calculation\MathTrig\Sum;
 
 $obj = new ExcelModel();
 $spreadsheet = new Spreadsheet();
+$spreadsheet = IOFactory::load('Prueba.xlsx');
 $sheet = $spreadsheet->getActiveSheet();
    //Bordes de los headers de la tabla
-   $sheet->getStyle('A1:R1')
+   $sheet->getStyle('A4:R4')
    ->getBorders()
    ->getAllBorders()
    ->setBorderStyle(Border::BORDER_THICK)
    ->setColor(new Color('000000'));
  //Celdas combinadas
- $sheet->mergeCells('A1:B1');
- $sheet->mergeCells('C1:E1');
- $sheet->mergeCells('F1:H1');
- $sheet->mergeCells('P1:R1');
+ $sheet->mergeCells('A4:B4');
+ $sheet->mergeCells('C4:E4');
+ $sheet->mergeCells('F4:H4');
+ $sheet->mergeCells('P4:R4');
 
 //Activar fuente en negrita
-$sheet->getStyle('A1:R1')->getFont()->setBold(true);
+$sheet->getStyle('A4:R4')->getFont()->setBold(true);
 
-
+$fechaActual = date ( 'd-m-Y' );
 
 $sql="SELECT tbl_usuario.usu_id,tbl_usuario.usu_nombre,tbl_usuario.usu_apellido,tbl_usuario.usu_correo,tbl_usuario.usu_telefono,tbl_vacante.id_vacante,tbl_vacante.vac_nombre,tbl_vacante.vac_publicacion,tbl_seleccionado.id_seleccionado,tbl_seleccionado.selec_nombre
 FROM  ((tbl_usuario  INNER JOIN tbl_usuariovacante ON tbl_usuario.usu_id=tbl_usuariovacante.usu_id)
@@ -41,16 +42,17 @@ FROM  ((tbl_usuario  INNER JOIN tbl_usuariovacante ON tbl_usuario.usu_id=tbl_usu
                      WHERE rol_id='2'";
 $listado=$obj->consult($sql);
 
-    $sheet ->setCellValue('A1','     ID_ASPIRANTE');
-    $sheet ->setCellValue('C1','       NOMBRE');
-    $sheet ->setCellValue('F1','      APELLIDO');
-    $sheet ->setCellValue('I1','      CORREO ELECTRONICO');
-    $sheet ->setCellValue('L1','      TELEFONO');
-    $sheet ->setCellValue('N1','      ESTADO');
-    $sheet ->setCellValue('P1','      VACANTE');
-    $n=2;
+    $sheet ->setCellValue('A4','     ID_ASPIRANTE');
+    $sheet ->setCellValue('C4','       NOMBRE');
+    $sheet ->setCellValue('F4','      APELLIDO');
+    $sheet ->setCellValue('I4','      CORREO ELECTRONICO');
+    $sheet ->setCellValue('L4','      TELEFONO');
+    $sheet ->setCellValue('N4','      ESTADO');
+    $sheet ->setCellValue('P4','      VACANTE');
+    $n=5;
+    $s=3;
 foreach ($listado as $Usu) {
-    
+    $sheet->getCell('L2')->setValue($fechaActual);
     $sheet->mergeCells('A'.$n.':B'.$n.'');
     $sheet->mergeCells('C'.$n.':E'.$n.'');
     $sheet->mergeCells('F'.$n.':H'.$n.'');
@@ -71,7 +73,7 @@ $n = $n-1;
 
 
 //Bordes del uerpo de la tabla
-$sheet->getStyle('A1:R'.$n)
+$sheet->getStyle('A4:R'.$n)
         ->getBorders()
         ->getAllBorders()
         ->setBorderStyle(Border::BORDER_THIN)
@@ -88,6 +90,7 @@ header ('Cache-Control: max-age = 1' );
 ob_end_clean();
 $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
 $writer->save('php://output');
-
-
+<<<<<<< HEAD
 ?>
+=======
+>>>>>>> 8ff81d03d9d0b1877aca4c810671740ec6e5e1a0

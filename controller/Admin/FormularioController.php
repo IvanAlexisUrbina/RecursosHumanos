@@ -2,7 +2,7 @@
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
+use PHPMailer\PHPMailer\SMTP;
 
 include_once '../model/Admin/FormularioVacantesModel.php';
 
@@ -44,6 +44,10 @@ Class FormularioController
     //los datos que llegan de la vista dodne creas una vacante
     public function postInsert(){
         $obj=new FormularioVacantesModel();
+        require 'PHPMailer/src/Exception.php';
+        require 'PHPMailer/src/PHPMailer.php';
+        require 'PHPMailer/src/SMTP.php';  
+
         $id=$obj->autoIncrement("tbl_vacante","id_vacante");
         $vac_nombre=$_POST['vac_nombre'];
         $vac_descripcion=$_POST['vac_descripcion'];
@@ -60,7 +64,52 @@ Class FormularioController
         }else{
         $sql="INSERT INTO tbl_vacante(id_vacante,vac_nombre,vac_descripcion,vac_jornada_laboral,vac_tipo_contrato,vac_salario,vac_fecha,vac_años_xp,vac_educacion,id_estadovacante,vac_publicacion) 
         VALUES($id,'".$vac_nombre."','".$vac_descripcion."','".$vac_jornada_laboral."','".$vac_tipo_contrato."','".$vac_salario."','".$vac_fecha."','".$vac_años_xp."','".$vac_educacion."',1,CURRENT_TIMESTAMP)";
-        $ejecutar=$obj->insert($sql); 
+        $ejecutar=$obj->insert($sql);
+        
+        
+        $sql="SELECT usu_correo FROM tbl_usuario WHERE rol_id='2'";
+        $usuarios=$obj->consult($sql);
+
+        foreach ($usuarios as $usu) {
+            $mail = new PHPMailer();                              // Passing `true` enables exceptions
+            try {
+                //Server settings
+                $mail->SMTPDebug = 0;                                // Enable verbose debug output
+
+                $mail->CharSet = 'UTF-8';
+
+                $mail->isSMTP();         
+                                            // Set mailer to use SMTP
+                $mail->Host = 'smtp.gmail.com';                     // Specify main and backup SMTP servers
+                $mail->SMTPAuth = true;                               // Enable SMTP authentication
+                $mail->Username = 'soportegers@gmail.com';                 // SMTP username
+                $mail->Password = '3122385203';                           // SMTP password
+                $mail->SMTPSecure = 'TSL';                            // Enable TLS encryption, `ssl` also accepted
+                $mail->Port =587;                                    // TCP port to connect to
+
+                //Recipients
+                $mail->setFrom('soportegers@gmail.com', 'Soporte Gers');
+                $mail->addAddress($usu['usu_correo']);     // Add a recipient
+                //$mail->addAddress(".$Usu_email.");                    // Name is optional
+                // $mail->addReplyTo('info@example.com', 'Information');
+               // $mail->addBCC('carolcundar19@gmail.com');
+                // $mail->addCC('bcc@example.com');
+
+                //Attachments
+                $mail->addAttachment('images/G.png');     // Add attachments
+                $mail->addAttachment('Gestion Humana - Gers');    // Optional name
+
+                //Content
+                $mail->isHTML(true);// Set email format to HTML
+                $mail->Subject = 'ALERTAS DE GERS S.A.S';
+                $mail->Body    = "<b>$vac_nombre</b> <br> Se ha generado una nueva vacante que te podria interesar.<br>Ingresa a nuestro portal y descrubre como postularte y ser parte de esta gran familia <b>GERS S.A.S</b><br><b>Copia link o ingresa:</b><br>https://apps.gers.co:8443/RecursosHumanos/web/login.php";
+                //$mail->AltBody = '';
+                $mail->send();
+
+            } catch (Exception $e) {
+                echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+            }
+        }
         redirect(getUrl("Admin","Formulario","consult"));
     }
 

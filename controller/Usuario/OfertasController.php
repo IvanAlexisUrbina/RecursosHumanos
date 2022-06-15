@@ -1,8 +1,8 @@
 <?php
-
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
 include_once '../model/Usuario/OfertasVacantesModel.php';
-
-
 Class OfertasController
 //consultar todas las vacantes que estan activas para que pueda aplicar el usuario
 { 
@@ -73,43 +73,30 @@ Class OfertasController
 // la vista de experiencia laboral registrada y para crear más experiencia
     public function experiencia(){
       $obj = new OfertasVacantesModel();
-      //Estudio de Sistemas Eléctricos
-      $sql="SELECT * FROM tbl_actividades WHERE id_area=1";
-      $actividades1=$obj->consult($sql);
-      //Diseño e Ingeniería
-      $sql="SELECT * FROM tbl_actividades WHERE id_area=2";
-      $actividades2=$obj->consult($sql);
-      //Pruebas Automatización y Control
-      $sql="SELECT * FROM tbl_actividades WHERE id_area=3";
-      $actividades3=$obj->consult($sql);
-      //Calidad de potencia
-      $sql="SELECT * FROM tbl_actividades WHERE id_area=4";
-      $actividades4=$obj->consult($sql);
-      //Eficiencia Energética
-      $sql="SELECT * FROM tbl_actividades WHERE id_area=5";
-      $actividades5=$obj->consult($sql);
-      //Sistemas de Puesta a Tierra
-      $sql="SELECT * FROM tbl_actividades WHERE id_area=6";
-      $actividades6=$obj->consult($sql);
-      //Comercial
-      $sql="SELECT * FROM tbl_actividades WHERE id_area=7";
-      $actividades7=$obj->consult($sql);
-      //Recursos Humanos
-      $sql="SELECT * FROM tbl_actividades WHERE id_area=8";
-      $actividades8=$obj->consult($sql);
-      //Recursos Humanos
-      $sql="SELECT * FROM tbl_actividades WHERE id_area=9";
-      $actividades9=$obj->consult($sql);
-      //Ingeniería Civil
-      $sql="SELECT * FROM tbl_actividades WHERE id_area=10";
-      $actividades10=$obj->consult($sql);
-      //Sistemas
-      $sql="SELECT * FROM tbl_actividades WHERE id_area=11";
-      $actividades11=$obj->consult($sql);
-
- $sql="SELECT * FROM tbl_historial_de_trabajo WHERE usu_id='".$_SESSION['idUser']."'";
+      $sql="SELECT * FROM tbl_area";
+      $areas=$obj->consult($sql);
+      $sql="SELECT * FROM tbl_historial_de_trabajo WHERE usu_id='".$_SESSION['idUser']."'";
       $historial=$obj->consult($sql);
       include_once '../view/Usuario/Oferta/consultexperiencia.php'; 
+    }
+    //AREAS DE LA EXPERIENCIA
+    public function  actividadesdinamicas(){
+      $obj = new OfertasVacantesModel();
+      $form=$_GET['id_hist'];
+      $sql="SELECT tbl_area.are_nombre,tbl_area.id_area
+      FROM ((tbl_area 
+      INNER JOIN tbl_historiadetalle ON tbl_historiadetalle.id_area=tbl_area.id_area)
+      INNER JOIN tbl_historial_de_trabajo ON tbl_historial_de_trabajo.id_hist=tbl_historiadetalle.id_hist)
+      INNER JOIN tbl_usuario ON tbl_historial_de_trabajo.usu_id=tbl_usuario.usu_id
+      WHERE tbl_usuario.usu_id='".$_SESSION['idUser']."' AND tbl_historiadetalle.id_hist='".$form."'";
+      $areaschecked=$obj->consult($sql);
+
+      foreach ($areaschecked as $area) {
+
+      echo "<div style='float:left;' class='col-md-5'>
+        <b><label style='font-size:20px;'>'". $area['are_nombre']."'</label> <input type='checkbox' disabled checked value='". $area['id_area']."'></b>
+        </div>";
+      }
     }
 //la vista para consultar y registrar documentos
     public function documento(){
@@ -195,7 +182,6 @@ redirect(getUrl("Usuario","Ofertas","documento"));
         $ejecutar=$obj->insert($sql);
         echo "<script>alert('Se ha agregado con exito!');</script>";
         redirect(getUrl("Usuario","Ofertas","consultusu"));
-
       }
       
       
@@ -235,7 +221,7 @@ redirect(getUrl("Usuario","Ofertas","documento"));
     $hist_ciudad=$_POST["hist_ciudad"];
     $hist_fecha_inicio=$_POST["hist_fecha_inicio"];
     $hist_fecha_fin=$_POST["hist_fecha_fin"];
-    $actividades=$_POST['actividades'];
+    $id_area=$_POST['area'];
     if(isset($_POST["hist_trabajoactual"])){
      $hist_trabajoactual=$_POST["hist_trabajoactual"];
     }else{
@@ -248,9 +234,9 @@ redirect(getUrl("Usuario","Ofertas","documento"));
 
     $ejecutar=$obj->insert($sql);
     //inserta todas las actividades seleccionas por el usuario en la table tbl_historiadetalle
-    for($i=0;$i<count($actividades);$i++){
+    for($i=0;$i<count($id_area);$i++){
       $id_historiadetalle=$obj->autoIncrement("tbl_historiadetalle","id_historiadetalle");
-      $sqlfk="INSERT INTO tbl_historiadetalle (id_historiadetalle,id_hist,id_actividades,usu_id) VALUES ($id_historiadetalle,'".$id."','".$actividades[$i]."','".$usu_id."')";
+      $sqlfk="INSERT INTO tbl_historiadetalle (id_historiadetalle,id_hist,usu_id,id_area) VALUES ($id_historiadetalle,'".$id."','".$usu_id."','".$id_area[$i]."')";
       $ejecutardetalle=$obj->insert($sqlfk);
     }
 
@@ -368,26 +354,6 @@ redirect(getUrl("Usuario","Ofertas","documento"));
     $ejecutar=$obj->delete($sql);
   }
 
-//muestra todas las actividades que haya seleccioando el usuario al momento de resgistrar la experiencia laboral
-  public function actividadesdinamicas(){
-    $obj= new OfertasVacantesModel();
-    $id_hist=$_GET['id_hist'];
-    $seleccionados=array();
-    
-    $sql="SELECT tbl_actividades.act_nombre,tbl_area.are_nombre,tbl_actividades.id_actividades
-    FROM ((tbl_historial_de_trabajo 
-      INNER JOIN tbl_historiadetalle ON tbl_historial_de_trabajo.id_hist=tbl_historiadetalle.id_hist)
-      INNER JOIN tbl_actividades ON tbl_actividades.id_actividades=tbl_historiadetalle.id_actividades)
-      INNER JOIN tbl_area ON tbl_actividades.id_area=tbl_area.id_area
-      WHERE tbl_historial_de_trabajo.id_hist=$id_hist";
-  $actividades=$obj->consult($sql);
-    foreach($actividades as $select){
-      echo "<div class='col-md-12 row justify-content-start'><div class='col-md-6'><input disabled type='checkbox' value=".$select['id_actividades']." checked><label>".$select['act_nombre']."</label></div><div class='col-md-6'> <b>AREA: <label>".$select['are_nombre']."</label></b></div></div>";
-    }
-
-
-}
-
 //consultar el estado en el que se encuentra el aspirante al momento de aplicar a las vacantes
   public function consulestado(){
   $obj= new OfertasVacantesModel();
@@ -404,6 +370,9 @@ redirect(getUrl("Usuario","Ofertas","documento"));
  }
 // aplicar vacante
  public function postinsert(){
+  require 'PHPMailer/src/Exception.php';
+  require 'PHPMailer/src/PHPMailer.php';
+  require 'PHPMailer/src/SMTP.php';
    $obj=new OfertasVacantesModel();
   // validar que no haya aplicado a la misma vacante
   $id_vacante=$_POST['id_vacante'];
@@ -440,15 +409,70 @@ if($gatillo==0){
       $usu_cartapresentacion=NULL;
     }
     $id_vacante=$_POST['id_vacante'];
-    $sql="INSERT INTO tbl_usuariovacante(ofer_id,usu_id,id_vacante,id_seleccionado,usu_viajar,usu_elegible,usu_cartapresentacion)
-          VALUES($id,'".$_SESSION['idUser']."','".$id_vacante."',3,'".$usu_viajar."','".$usu_elegible."','".$usu_cartapresentacion."')";
+    $sql="INSERT INTO tbl_usuariovacante(ofer_id,usu_id,id_vacante,id_seleccionado,usu_viajar,usu_elegible,usu_cartapresentacion,usuvac_fecha)
+          VALUES($id,'".$_SESSION['idUser']."','".$id_vacante."',3,'".$usu_viajar."','".$usu_elegible."','".$usu_cartapresentacion."',CURRENT_TIMESTAMP)";
     $execute=$obj->insert($sql);
+     /// mandar correos despues de aplicar a la vacante
+     $sql="SELECT tbl_vacante.vac_nombre,tbl_usuario.usu_correo
+      FROM tbl_usuario 
+      INNER JOIN tbl_usuariovacante ON tbl_usuario.usu_id=tbl_usuariovacante.usu_id 
+      INNER JOIN tbl_vacante ON tbl_usuariovacante.id_vacante=tbl_vacante.id_vacante 
+      WHERE tbl_usuariovacante.usu_id='".$_SESSION['idUser']."'
+      AND tbl_usuariovacante.id_vacante='".$id_vacante."';";
+     $usuarios=$obj->consult($sql);
+    //PARA CONTAR TODOS LOS USUARIOS QUE HAN APLICADO Y ASI MISMO MANDARLE UN CORREO CON LA CANTIDAD QUE HAY APLICADOS
+     $sql="SELECT count(*) FROM tbl_usuariovacante WHERE
+           id_vacante='".$id_vacante."'";
+     $cantidad=$obj->consult($sql);
+
+     foreach ($usuarios as $usu) {
+      $mail = new PHPMailer();                              // Passing `true` enables exceptions
+      try {
+          //Server settings
+          $mail->SMTPDebug = 2;                                // Enable verbose debug output
+
+          $mail->CharSet = 'UTF-8';
+
+          $mail->isSMTP();         
+                                      // Set mailer to use SMTP
+          $mail->Host = 'smtp.gmail.com';                     // Specify main and backup SMTP servers
+          $mail->SMTPAuth = true;                               // Enable SMTP authentication
+          $mail->Username = 'soportegers@gmail.com';                 // SMTP username
+          $mail->Password = '3122385203';                           // SMTP password
+          $mail->SMTPSecure = 'TSL';                            // Enable TLS encryption, `ssl` also accepted
+          $mail->Port =587;                                    // TCP port to connect to
+
+          //Recipients
+          $mail->setFrom('soportegers@gmail.com', 'Soporte Gers');
+          $mail->addAddress($usu['usu_correo']);     // Add a recipient
+          //$mail->addAddress(".$Usu_email.");                    // Name is optional
+          // $mail->addReplyTo('info@example.com', 'Information');
+         // $mail->addBCC('carolcundar19@gmail.com');
+          // $mail->addCC('bcc@example.com');
+
+          //Attachments
+          $mail->addAttachment('images/G.png');     // Add attachments
+          $mail->addAttachment('Gestion Humana - Gers');    // Optional name
+
+          //Content
+          $mail->isHTML(true);// Set email format to HTML
+          $mail->Subject = 'ALERTAS DE GERS S.A.S';
+          $mail->Body    = "Ha aplicado a la vacante <b>".$usu['vac_nombre']."</b> satisfactoriamente, visita nuestro portal para ver tu estado en la vacante, también nos iremos contactando contigo si tu estado en la vacante cambia. gracias por postularte y querer ser parte de esta gran familia <b>GERS S.A.S";
+          //$mail->AltBody = '';
+          $mail->send();
+         // redirect(getUrl("Usuario","Ofertas","consulestado"));
+      } catch (Exception $e) {
+          echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+      } 
+}
+  
+
   }else{
       echo "<script>alert('ya ha aplicado a esta vacante');</script>";
   }
 
 
-   redirect(getUrl("Usuario","Ofertas","consulestado"));
+  // redirect(getUrl("Usuario","Ofertas","consulestado"));
   }
 
 

@@ -78,7 +78,7 @@ foreach ($Usuario as $usu) {
         ?>
         <div class="col-md-6"> 
             <label for="">Carta de presentación</label><br>
-            <a type="button" target="_black" href="<?php echo 'http://'.$_SERVER['HTTP_HOST'].'/RecursosHumanos'.$usu2['usu_cartapresentacion']?>" class=" btn btn-dark"><i class="fa fa-file"></i></a>
+            <a type="button" target="_black" href="<?php echo 'https://'.$_SERVER['HTTP_HOST'].'/RecursosHumanos'.$usu2['usu_cartapresentacion']?>" class=" btn btn-dark"><i class="fa fa-file"></i></a>
         </div>
         <?php } }
         ?>
@@ -89,7 +89,7 @@ if($usu['usu_hojadevida']=="../web/hojas/"){
             echo "<label class='form form-control'>Este usuario no tiene registrada una hoja de vida todavia</label>";
     }else {
             ?>
-           <a type="button" target="_black" href="<?php echo 'http://'.$_SERVER['HTTP_HOST'].'/RecursosHumanos'.$usu['usu_hojadevida']?>" class="modalhojadevida btn btn-dark"><i class="fa fa-file"></i></a>
+           <a type="button" target="_black" href="<?php echo 'https://'.$_SERVER['HTTP_HOST'].'/RecursosHumanos'.$usu['usu_hojadevida']?>" class="modalhojadevida btn btn-dark"><i class="fa fa-file"></i></a>
 <?php } ?>
         </div>
 

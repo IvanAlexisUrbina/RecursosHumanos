@@ -1,4 +1,5 @@
 <?php
+
 if ($row==0){ 
     echo "<h3 class='from-control'>No se encontraron resultados</h3>";
 }else {
@@ -8,10 +9,11 @@ if ($row==0){
      }else {    
 ?>
 
-<iframe src="<?php echo 'http://'.$_SERVER['HTTP_HOST'].'/RecursosHumanos'.$usu['form_titulo_profesional']?>"
+<iframe src="<?php echo 'https://'.$_SERVER['HTTP_HOST'].'/RecursosHumanos'.$usu['form_titulo_profesional']?>"
     frameborder="0" scrolling="yes" width="100%" height="600px"></iframe>
 <?php
  }
  }
 }
+
 ?>

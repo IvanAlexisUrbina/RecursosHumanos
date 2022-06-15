@@ -1,9 +1,13 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
 .textArea {
     resize: none;
 }
 
 .labelObsinicial {
-    font-size: 18px;
+   
 }
 
 #menu_toggle {
@@ -36,7 +40,7 @@
 }
 
 .encabezadoForm {
-    color: #181864;
+    color: #000000;
     font-weight: bolder;
     font-size: 20px;
 }
@@ -58,9 +62,9 @@
 }
 
 .estiloinput {
-    border: 2px solid #73879C;
+    border: 1px solid black;
     width: 50%;
-    border-radius: 5px;
+    border-radius: 30px;
 }
 
 .eme {
@@ -82,21 +86,23 @@
 }
 
 .eo {
-    padding: 5px;
+    padding:5px 5px 13px 26px;
     color: black;
+    opacity: 0.9;
+
 }
 
 .eme2 {
     background-color: white;
     color: rgb(0, 0, 0);
     width: 100%;
-    border-radius: 5px;
+    border-radius: 30px;
 }
 
 .titulos_negrita {
-    color: #181864;
-    font-weight: bolder;
-    font-size: 15px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: 24px;
 }
 
 .logoform {
@@ -107,20 +113,17 @@
     bottom: 70%;
 }
 
-#ofertasAspirante {}
-
 #imagen_oferta {
     width: 50%;
     height: 120px;
     margin-left: 25%;
 }
 
-.botonaplicar {}
-
 #botonverdetalle {
     margin-left: 29%;
     color: white;
     background-color: #e28e16;
+    border-radius: 35px;
 }
 
 .desc_tarjetas {
@@ -133,7 +136,7 @@
     margin-left: 30px;
     margin-bottom: 30px;
     border-radius: 10px;
-    border: 2px inline black;
+    border: 1px inline black;
     width: 30rem;
     padding: 1%;
     position: relative;
@@ -155,7 +158,7 @@ button {
 
 .filtros {
     border-radius: 5px;
-    border: 3px solid #181864;
+    border: 1px solid #181864;
 }
 
 .table {
@@ -166,6 +169,7 @@ button {
     font-weight: bolder;
     color: black;
     text-align: -webkit-center;
+    
 }
 
 #contenedorcontra {
@@ -391,7 +395,7 @@ body::-webkit-scrollbar-thumb:active {
     text-align: center;
     height: 760px;
     align-items: center;
-    border: 10px solid #181864;
+    border: 5px solid #181864;
 }
 
 
@@ -440,7 +444,7 @@ body::-webkit-scrollbar-thumb:active {
 .divcontenedores {
     width: 100%;
     height: auto;
-    border: 2px solid black;
+    border: 1px solid black;
     border-radius: 5px;
 }
 
@@ -460,7 +464,7 @@ body::-webkit-scrollbar-thumb:active {
 }
 
 .show {
-    border: 3px solid black;
+    border: 1px solid black;
     border-radius: 5px;
     padding: 5px;
 }
@@ -519,7 +523,7 @@ body::-webkit-scrollbar-thumb:active {
 /*LOGIN*/
 
 .login__input:focus {
-    border: 3px solid #000000;
+    border: 1px solid #000000;
     outline: none;
     box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
 }
@@ -575,7 +579,7 @@ body::-webkit-scrollbar-thumb:active {
 }
 
 .formulario__grupo-incorrecto .formulario__input {
-    border: 3px solid #bb2929;
+    border: 1px solid #bb2929;
 }
 
 
@@ -614,3 +618,13 @@ html {
 #aplicaroculto {
     display: none;
 }
+
+/* CLASE PARA DAR A LOS BOTONES UN RADIO */
+.radios{
+   border-radius: 35px;
+}
+/* EDITAR FORMULARIO CON PADDING */
+#alertamatricula{
+padding: 1px 1px 1px 1px;
+}
+

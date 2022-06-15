@@ -1,3 +1,6 @@
+<?php
+    if($_SESSION['rolId']==2){         
+?>
 <div class="col-md-3 left_col menu_fixed">
     <div class="left_col scroll-view">
     <div class="navbar nav_title" style="border: 0;">
@@ -28,7 +31,6 @@
         <h3>LISTA DE OFERTA LABORAL</h3>
         <ul class="nav side-menu">
             <li><a href="indexUsu.php"><i class="fa fa-home"></i>Inicio </a>
-            
             </li>
             <li><a><i class="fa fa-group"></i>Ofertas<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
@@ -60,9 +62,13 @@
             <li><a><i class="fa fa-folder"></i>Aplicaciones<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
                 <li><a href="<?php echo getUrl("Usuario","Ofertas","consulestado");?>">Consultar mis aplicaciones</a></li>
-            
         </ul>
         </div>
        </div>
     </div>
 </div>
+<?php
+ }else {
+    session_destroy();
+    redirect("login.php");
+}  ?>
